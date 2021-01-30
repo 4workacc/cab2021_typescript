@@ -4,7 +4,7 @@ import './App.css';
 function App() {
   return (
     <div className="App">
-		<a hfer="asd">/learn react/i</a>
+		<a href="asd">/learn react/i</a>
     </div>
   );
 }
