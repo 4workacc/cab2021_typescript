@@ -3,11 +3,11 @@ import { NavBar } from './NavBar/Navbar';
 
 export const MainPage: React.FC = () => {
     return (
-        <div>            
+        <div>
             <NavBar />
-            <div className="container">     
-                   
-            </div>    
+            <div className="container">
+               
+            </div>
         </div>
     )
 }
