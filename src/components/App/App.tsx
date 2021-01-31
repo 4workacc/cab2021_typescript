@@ -1,11 +1,12 @@
 import * as React from 'react';
+import { LoginPage } from '../LoginPage/LoginPage';
+import { MainPage } from '../MainPage/MainPage';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-		<a href="asd">/learn react/i</a>
-    </div>
+const App: React.FC = () => {
+  return (  
+    // <MainPage />
+    <LoginPage />
   );
 }
 

@@ -1,11 +1,13 @@
 import * as React from 'react';
+import { NavBar } from './NavBar/Navbar';
 
-const MainPage = () => {
+export const MainPage: React.FC = () => {
     return (
-        <div>
-
+        <div>            
+            <NavBar />
+            <div className="container">     
+                   
+            </div>    
         </div>
     )
 }
-
-export default MainPage;
