@@ -15,6 +15,7 @@ const rootReducer = (
             return {
                 ...state,
                 curPage : "LoginPage",
+                curSubPage : "Tasks",
                 curUserId : -1,
                 curUserFio : ""
             }; 
@@ -23,6 +24,11 @@ const rootReducer = (
                     ...state,
                     curPage : "MainPage",
                     curSubPage: action.curSubPage||"MainMenu"
+                };
+        case "ShowTest" :
+                return {
+                    ...state,
+                    curSubPage : "TestPage",
                 }
         default :
             return state;

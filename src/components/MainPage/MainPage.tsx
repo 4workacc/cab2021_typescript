@@ -4,35 +4,39 @@ import { Dispatch } from "redux";
 import { NavBar } from "./NavBar/Navbar";
 import { AdminPanel } from "./SubPages/AdminPanel";
 import { Cabinet } from "./SubPages/Cabinet";
-import { MainMenu } from "./SubPages/MainMenu";
-import { Tests } from "./SubPages/Tests";
+import { Tasks } from "./SubPages/Tasks";
+import { TestsResults } from "./SubPages/TestsResults";
+import { TestPage } from "./TestPage/TestPage";
 
 export const MainPage: React.FC = () => {
-    const curSubPage = useSelector((state: SiteState) => state.curSubPage);
-    const [curShowSubPage, changeCurShowSubPage] = React.useState(<MainMenu />);
+  const curSubPage = useSelector((state: SiteState) => state.curSubPage);
+  const [curShowSubPage, changeCurShowSubPage] = React.useState(<Tasks />);
 
-    React.useEffect(() => {
-        switch (curSubPage) {
-            case "MainMenu":
-                changeCurShowSubPage(<MainMenu />);
-                break;
-            case "Tests":
-                changeCurShowSubPage(<Tests />);
-                break;
-            case "Cabinet":
-                changeCurShowSubPage(<Cabinet />);
-                break;
-            case "AdminPanel":
-                changeCurShowSubPage(<AdminPanel />);
-                break;
-            default:
-                changeCurShowSubPage(<MainMenu />);
-        }
-    }, [curSubPage]);
-    return (
-        <div>
-            <NavBar />
-            <div className="container">{curShowSubPage}</div>
-        </div>
-    );
+  React.useEffect(() => {
+    switch (curSubPage) {
+      case "Tasks":
+        changeCurShowSubPage(<Tasks />);
+        break;
+      case "TestsResults":
+        changeCurShowSubPage(<TestsResults />);
+        break;
+      case "Cabinet":
+        changeCurShowSubPage(<Cabinet />);
+        break;
+      case "AdminPanel":
+        changeCurShowSubPage(<AdminPanel />);
+        break;
+      case "TestPage":
+        changeCurShowSubPage(<TestPage />);
+        break;
+      default:
+        changeCurShowSubPage(<Tasks />);
+    }
+  }, [curSubPage]);
+  return (
+    <div>
+      <NavBar />
+      <div className="container">{curShowSubPage}</div>
+    </div>
+  );
 };

@@ -22,11 +22,11 @@ export const NavBar: React.FC = () => {
         <a href="/" className="brand-logo">  {`Welcome, ${curUserFio}`}</a>
         <ul className="right hide-on-med-and-down">
           <li><a
-            onClick={() => navHandler("MainMenu")}>MainMenu</a></li>
+            onClick={() => navHandler("Tasks")}>Tasks</a></li>
           <li><a
             onClick={() => navHandler("Cabinet")}>Cabinet</a></li>
           <li><a
-            onClick={() => navHandler("Tests")}>Tests</a></li>
+            onClick={() => navHandler("TestsResults")}>TestsResults</a></li>
           <li><a
             onClick={exitHandler} >Exit</a></li>
         </ul>

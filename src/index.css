@@ -21,10 +21,10 @@ code {
   left: 40%;
 }
 
-.userTestsTab{
+.userTestsResultsTab{
   font-size: 30px;
 }
-.userTestsTabTr:hover {
+.userTestsResultsTabTr:hover {
   border-radius: 15px;
   background-color: lightblue;
 }
