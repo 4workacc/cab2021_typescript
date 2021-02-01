@@ -1,8 +1,17 @@
 import * as React from 'react';
+import { useDispatch } from 'react-redux';
+import { Dispatch } from 'redux';
 
 import "./LoginPage.css";
 
 export const LoginPage: React.FC = () => {
+    const dispatch: Dispatch<any> = useDispatch();
+
+    const LoginButHandler = () => {
+        dispatch ({
+            type : "LogIn"
+        })
+    }
     return (
         <div className="LoginPage">
             <div className="input-field col s12">
@@ -13,7 +22,9 @@ export const LoginPage: React.FC = () => {
                 <input id="password" type="password" className="validate" />
                 <label htmlFor="password">Password</label>
             </div>
-            <a className="waves-effect waves-light btn bntCenter">Enter</a>
+            <a
+                className="waves-effect waves-light btn bntCenter"
+                onClick={LoginButHandler}>Enter</a>
         </div>
     )
 } 
