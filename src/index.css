@@ -20,3 +20,11 @@ code {
 .bntCenter {
   left: 40%;
 }
+
+.userTestsTab{
+  font-size: 30px;
+}
+.userTestsTabTr:hover {
+  border-radius: 15px;
+  background-color: lightblue;
+}

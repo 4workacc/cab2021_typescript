@@ -8,14 +8,22 @@ const rootReducer = (
         case "LogIn" :
             return  {
                 ...state,
-                curPage : "MainPage"
+                curPage : "MainPage",
+                curUserFio : "IvanovII"
             }; 
         case "LogOut" : 
             return {
                 ...state,
                 curPage : "LoginPage",
-                curUserId : -1
+                curUserId : -1,
+                curUserFio : ""
             }; 
+        case "GoToSubPage" :               
+                return {
+                    ...state,
+                    curPage : "MainPage",
+                    curSubPage: action.curSubPage||"MainMenu"
+                }
         default :
             return state;
     }    

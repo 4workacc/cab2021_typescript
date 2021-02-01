@@ -8,8 +8,8 @@ export const LoginPage: React.FC = () => {
     const dispatch: Dispatch<any> = useDispatch();
 
     const LoginButHandler = () => {
-        dispatch ({
-            type : "LogIn"
+        dispatch({
+            type: "LogIn"
         })
     }
     return (

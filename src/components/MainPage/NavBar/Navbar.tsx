@@ -1,23 +1,32 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Dispatch } from 'redux';
 
 export const NavBar: React.FC = () => {
+  const curUserFio = useSelector((state: SiteState) => state.curUserFio);
   const dispatch: Dispatch<any> = useDispatch();
-  const cabinetHandler = () => {}
-  const testsHander = () => {}
+  const navHandler = (targetPage: string) => {
+    dispatch({
+      type: "GoToSubPage",
+      curSubPage: targetPage
+    })
+  }
   const exitHandler = () => {
-      dispatch ({
-        type : "LogOut"
-      })
+    dispatch({
+      type: "LogOut"
+    })
   }
   return (
     <nav>
       <div className="nav-wrapper teal darken-1 px3">
-        <a href="/" className="brand-logo"> Welcome, userName</a>
+        <a href="/" className="brand-logo">  {`Welcome, ${curUserFio}`}</a>
         <ul className="right hide-on-med-and-down">
-          <li><a >Cabinet</a></li>
-          <li><a >Tests</a></li>
+          <li><a
+            onClick={() => navHandler("MainMenu")}>MainMenu</a></li>
+          <li><a
+            onClick={() => navHandler("Cabinet")}>Cabinet</a></li>
+          <li><a
+            onClick={() => navHandler("Tests")}>Tests</a></li>
           <li><a
             onClick={exitHandler} >Exit</a></li>
         </ul>
@@ -25,5 +34,5 @@ export const NavBar: React.FC = () => {
     </nav>
   )
 }
-  
-  
+
+

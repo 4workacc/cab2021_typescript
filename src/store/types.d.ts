@@ -6,11 +6,24 @@ interface IUser {
 type SiteState = {
     curPage : string,
     curSubPage : string,
-    curUserId : int
+    curUserId : int,
+    curUserFio : string
 }
 
 type SiteAction = {
-    type : string
+    type : string,
+    curSubPage?:string
 }
+
+interface IUserTest {
+    id : number,
+    title : string,
+    startDate?: string,
+    endDate: string,
+    active: boolean,
+    availible?:boolean,
+    result?: number
+}
+
 
 type DispatchType = (args:SiteAction) => SiteAction;
