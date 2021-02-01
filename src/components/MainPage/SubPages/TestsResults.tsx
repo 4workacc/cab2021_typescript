@@ -6,78 +6,93 @@ export const TestsResults: React.FC = () => {
     const testSet: IUserTestResults[] = [
       {
         id: 1,
-        title: "test0",
-        endDate: "2021-01-02"       
+        title: "ЦТ_2020_1",
+        endDate: "2021-01-02",
+        result : 10  
+      },
+      {
+        id: 2,
+        title: "ЦТ_2020_2",
+        endDate: "2021-01-02",
+        result : 10
+      },
+      {
+        id: 1,
+        title: "ЦТ_2020_3",
+        endDate: "2021-01-02",
+        result : 10
+      },
+      {
+        id: 2,
+        title: "ЦТ_2020_1",
+        endDate: "2021-01-02",
+        result : 10
+      },
+      {
+        id: 1,
+        title: "ЦТ_2020_2",
+        endDate: "2021-01-02",
+        result : 10
+      },
+      {
+        id: 2,
+        title: "ЦТ_2020_6",
+        endDate: "2021-01-02",
+        result : 10
+      },
+      {
+        id: 1,
+        title: "Пунтуация ",
+        endDate: "2021-01-02",
+        result : 10
       },
       {
         id: 2,
         title: "test2",
-        endDate: "2021-01-02"
+        endDate: "2021-01-02",
+        result : 10
       },
       {
         id: 1,
         title: "test0",
-        endDate: "2021-01-02"
+        endDate: "2021-01-02",
+        result : 10
       },
       {
         id: 2,
         title: "test2",
-        endDate: "2021-01-02"
+        endDate: "2021-01-02",
+        result : 10
       },
       {
         id: 1,
         title: "test0",
-        endDate: "2021-01-02"
+        endDate: "2021-01-02",
+        result : 10
       },
       {
         id: 2,
         title: "test2",
-        endDate: "2021-01-02"
+        endDate: "2021-01-02",
+        result : 10
       },
       {
         id: 1,
         title: "test0",
-        endDate: "2021-01-02"
+        endDate: "2021-01-02",
+        result : 10
       },
       {
         id: 2,
         title: "test2",
-        endDate: "2021-01-02"
+        endDate: "2021-01-02",
+        result : 10
       },
       {
         id: 1,
         title: "test0",
-        endDate: "2021-01-02"
-      },
-      {
-        id: 2,
-        title: "test2",
-        endDate: "2021-01-02"
-      },
-      {
-        id: 1,
-        title: "test0",
-        endDate: "2021-01-02"
-      },
-      {
-        id: 2,
-        title: "test2",
-        endDate: "2021-01-02"
-      },
-      {
-        id: 1,
-        title: "test0",
-        endDate: "2021-01-02"
-      },
-      {
-        id: 2,
-        title: "test2",
-        endDate: "2021-01-02"
-      },
-      {
-        id: 1,
-        title: "test0",
-        endDate: "2021-01-02"
+        endDate: "2021-01-02",
+        result : 10
       },
       {
         id: 2,
@@ -101,6 +116,7 @@ export const TestsResults: React.FC = () => {
         <tr className = "userTestsResultsTabTr">
           <td>{el.title}</td>
           <td>{el.endDate}</td>
+          <td>{el.result}</td>
         </tr>
       );
     });
@@ -112,8 +128,9 @@ export const TestsResults: React.FC = () => {
       <table className="centered striped userTestsResultsTab">
         <thead>
           <tr>
-            <th>TestName</th>
-            <th>End date</th>
+            <th>Назва тэста</th>
+            <th>Дата выконвання</th>
+            <th>Вынік</th>
           </tr>
         </thead>
 

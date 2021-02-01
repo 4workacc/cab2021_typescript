@@ -9,7 +9,7 @@ const rootReducer = (
             return  {
                 ...state,
                 curPage : "MainPage",
-                curUserFio : "IvanovII"
+                curUserFio : "Іваноў І.І."
             }; 
         case "LogOut" : 
             return {
@@ -28,6 +28,7 @@ const rootReducer = (
         case "ShowTest" :
                 return {
                     ...state,
+                    curTestSet : action.curTestSet || '',
                     curSubPage : "TestPage",
                 }
         default :

@@ -16,15 +16,15 @@ export const LoginPage: React.FC = () => {
         <div className="LoginPage">
             <div className="input-field col s12">
                 <input id="login_name" type="text" className="validate" />
-                <label htmlFor="login_name">Login</label>
+                <label htmlFor="login_name">Лагін</label>
             </div>
             <div className="input-field col s12">
                 <input id="password" type="password" className="validate" />
-                <label htmlFor="password">Password</label>
+                <label htmlFor="password">Пароль</label>
             </div>
             <a
                 className="waves-effect waves-light btn bntCenter"
-                onClick={LoginButHandler}>Enter</a>
+                onClick={LoginButHandler}>Увайсці</a>
         </div>
     )
 } 

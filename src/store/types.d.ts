@@ -39,11 +39,13 @@ type SiteState = {
   curUserId: int;
   curUserFio: string;
   curTest: string;
+  curTestSet: string;
 };
 
 type SiteAction = {
   type: string;
   curSubPage?: string;
+  curTestSet?:string;
 };
 
 type DispatchType = (args: SiteAction) => SiteAction;

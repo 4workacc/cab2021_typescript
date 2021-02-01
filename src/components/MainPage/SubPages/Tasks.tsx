@@ -1,20 +1,27 @@
 import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { Dispatch } from "redux";
 
 export const Tasks: React.FC = () => {
+  const dispatch: Dispatch<any> = useDispatch();
+  
   const [userTasksList, setUserTasksList] = useState<any[]>([]);
   const [userShowTasksList, setUsetShowTasksList] = useState<any[]>([]);
 
   const taskClickHandler = (f: string) => {
-    alert(f);
+      dispatch({
+        type : "ShowTest",
+        curTestSet : f
+      })
   };
   useEffect(() => {
     setUserTasksList([
       {
-        title: "test1",
+        title: "ЦТ_2020_1",
         endDate: "2020-01-01",
       },
       {
-        title: "test2",
+        title: "ЦТ_2020_2",
         endDate: "2020-01-01",
       },
     ]);
@@ -39,8 +46,8 @@ export const Tasks: React.FC = () => {
       <table className="centered striped userTasksTab">
         <thead>
           <tr>
-            <th>TestName</th>
-            <th>End date</th>
+            <th>Назва тэста</th>
+            <th>Срок выканання</th>
           </tr>
         </thead>
 

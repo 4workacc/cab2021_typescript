@@ -3,5 +3,6 @@ export const initState: SiteState = {
     curSubPage : "MainMenu",
     curUserId : -1,
     curUserFio : '',
-    curTest : ''
+    curTest : '',
+    curTestSet : ''
 }

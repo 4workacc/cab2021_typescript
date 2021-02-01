@@ -18,21 +18,20 @@ export const NavBar: React.FC = () => {
   }
   return (
     <nav>
-      <div className="nav-wrapper teal darken-1 px3">
-        <a href="/" className="brand-logo">  {`Welcome, ${curUserFio}`}</a>
+      <div className="nav-wrapper teal darken-1 px3 NavBar" >
+        <a href="/" className="brand-logo">  {`Прывітанне, ${curUserFio}`}</a>
         <ul className="right hide-on-med-and-down">
           <li><a
-            onClick={() => navHandler("Tasks")}>Tasks</a></li>
+            onClick={() => navHandler("Tasks")}>Заданні</a></li>
+          {/* <li><a
+            onClick={() => navHandler("Cabinet")}>Кабінет</a></li> */}
           <li><a
-            onClick={() => navHandler("Cabinet")}>Cabinet</a></li>
+            onClick={() => navHandler("TestsResults")}>Вынікі тэстаў</a></li>
           <li><a
-            onClick={() => navHandler("TestsResults")}>TestsResults</a></li>
-          <li><a
-            onClick={exitHandler} >Exit</a></li>
+            onClick={exitHandler} >Выхад</a></li>
         </ul>
       </div>
     </nav>
   )
 }
-
 
