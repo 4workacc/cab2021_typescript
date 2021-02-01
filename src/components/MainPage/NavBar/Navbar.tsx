@@ -2,6 +2,8 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Dispatch } from 'redux';
 
+import "./Navbar.css";
+
 export const NavBar: React.FC = () => {
   const curUserFio = useSelector((state: SiteState) => state.curUserFio);
   const dispatch: Dispatch<any> = useDispatch();
@@ -17,11 +19,10 @@ export const NavBar: React.FC = () => {
     })
   }
   return (
-    <nav>
-      <div className="nav-wrapper teal darken-1 px3 NavBar" >
-        <a href="/" className="brand-logo">  {`Прывітанне, ${curUserFio}`}</a>
-        <ul className="right hide-on-med-and-down">
-          <li><a
+    <div className = "NavBar"> 
+      <p>{`Прывітанне, ${curUserFio}`}</p>
+    <ul>
+    <li><a
             onClick={() => navHandler("Tasks")}>Заданні</a></li>
           {/* <li><a
             onClick={() => navHandler("Cabinet")}>Кабінет</a></li> */}
@@ -29,9 +30,8 @@ export const NavBar: React.FC = () => {
             onClick={() => navHandler("TestsResults")}>Вынікі тэстаў</a></li>
           <li><a
             onClick={exitHandler} >Выхад</a></li>
-        </ul>
-      </div>
-    </nav>
+    </ul>
+  </div>
   )
 }
 

@@ -8,6 +8,8 @@ import { Tasks } from "./SubPages/Tasks";
 import { TestsResults } from "./SubPages/TestsResults";
 import { TestPage } from "./TestPage/TestPage";
 
+import "./MainPage.css";
+
 export const MainPage: React.FC = () => {
   const curSubPage = useSelector((state: SiteState) => state.curSubPage);
   const [curShowSubPage, changeCurShowSubPage] = React.useState(<Tasks />);
@@ -34,7 +36,7 @@ export const MainPage: React.FC = () => {
     }
   }, [curSubPage]);
   return (
-    <div>
+    <div className = "MainPage">
       <NavBar />
       <div className="container">{curShowSubPage}</div>
     </div>

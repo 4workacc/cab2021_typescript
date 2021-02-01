@@ -19,8 +19,8 @@ export const TestsResults: React.FC = () => {
       {
         id: 1,
         title: "ЦТ_2020_3",
-        endDate: "2021-01-02",
-        result : 10
+        endDate: "-",
+        result : 0
       },
       {
         id: 2,

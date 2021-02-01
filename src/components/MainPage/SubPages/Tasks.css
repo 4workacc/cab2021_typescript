@@ -1,0 +1,17 @@
+.Tasks {
+    width: 100%;
+}
+.Tasks table {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.Tasks table td {
+    text-align: center;
+}
+.Tasks table tbody tr:nth-child(odd) {
+    background-color: lightblue;
+}
+.Tasks table tbody tr:nth-child(even) {
+    background-color: lightgray;
+}

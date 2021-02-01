@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { Dispatch } from "redux";
 
+import "./Tasks.css"
+
 export const Tasks: React.FC = () => {
   const dispatch: Dispatch<any> = useDispatch();
   
@@ -43,7 +45,7 @@ export const Tasks: React.FC = () => {
   }, [userTasksList]);
   return (
     <div className="Tasks">
-      <table className="centered striped userTasksTab">
+      <table className="userTasksTab">
         <thead>
           <tr>
             <th>Назва тэста</th>

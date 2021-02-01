@@ -8,7 +8,31 @@ export const TestPageTemplateA: React.FC = () => {
         літары:
       </p>
       <div className="TPT_A">
-            <div className = "OO"></div> 
+        <span>
+        <input type = "checkbox"
+          name = "OO"></input>
+        <label htmlFor = "OO" className = "OO">asdasdasd</label>
+        </span>
+        <span>
+        <input type = "checkbox"
+          name = "OO"></input>
+        <label htmlFor = "OO" className = "OO">asdasdasd</label>
+        </span>
+        <span>
+        <input type = "checkbox"
+          name = "OO"></input>
+        <label htmlFor = "OO" className = "OO">asdasdasd</label>
+        </span>
+        <span>
+        <input type = "checkbox"
+          name = "OO"></input>
+        <label htmlFor = "OO" className = "OO">asdasdasd</label>
+        </span>
+        <span>
+        <input type = "checkbox"
+          name = "OO"></input>
+        <label htmlFor = "OO" className = "OO">asdasdasd</label>
+        </span>
       </div>
     </div>
   );

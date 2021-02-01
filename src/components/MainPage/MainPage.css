@@ -1,0 +1,14 @@
+.container {
+    width: 1000px;
+    height: 700px;
+
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -500px;
+    margin-top: -300px;
+
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-around;
+}
