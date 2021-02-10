@@ -1,8 +1,11 @@
-export const initState: SiteState = {
+export const initState: IRootState = {
     curPage : "LoginPage" ,
-    curSubPage : "MainMenu",
-    curUserId : -1,
-    curUserFio : '',
-    curTest : '',
-    curTestSet : ''
+    curSubPage : "",
+
+    curUser: {
+        UserId : -1,
+        UserFIO : '',
+        UserSchool : "",
+        UserClass : "",
+    }    
 }

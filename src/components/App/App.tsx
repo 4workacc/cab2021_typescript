@@ -1,17 +1,15 @@
-import * as React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { Dispatch } from 'redux';
-import { LoginPage } from '../LoginPage/LoginPage';
-import { MainPage } from '../MainPage/MainPage';
+import React, { useEffect, useState } from 'react';
+import {  useSelector } from 'react-redux';
+import { LoginPage } from '../LoginPage';
+import { MainPage } from '../MainPage';
 import './App.css';
 
-const App: React.FC = () => {
-  const dispatch: Dispatch<any> = useDispatch();
-  const curPage: string = useSelector( (state:SiteState) => state.curPage)
+export const App: React.FC = () => {
+  const curPage: string = useSelector( (state:IRootState) => state.curPage)
 
-  const [ curShowPage, changeCurShowPage ] = React.useState(<LoginPage />);
+  const [ curShowPage, changeCurShowPage ] = useState(<LoginPage />);
 
-  React.useEffect( ()=>{
+  useEffect( ()=>{
     switch ( curPage ) {
       case "LoginPage" : changeCurShowPage(<LoginPage />); break;
       case "MainPage"  : changeCurShowPage(<MainPage />); break;
@@ -25,5 +23,3 @@ const App: React.FC = () => {
     </>
   )
 }
-// 
-export default App;

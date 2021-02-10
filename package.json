@@ -2,8 +2,9 @@
   "name": "cab2021_typescript",
   "version": "0.1.0",
   "private": true,
-  "homepage" : "https://4workacc.github.io/cab2021_site/",
+  "homepage": "https://4workacc.github.io/cab2021_site/",
   "dependencies": {
+    "@material-ui/core": "^4.11.3",
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.3",
     "@testing-library/user-event": "^12.6.2",
@@ -26,8 +27,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "predeploy" : "npm run build",
-    "deploy" : "gh-pages -d build"
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [

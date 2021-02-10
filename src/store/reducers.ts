@@ -1,36 +1,27 @@
 import { initState } from "./state";
 
 const rootReducer = (
-    state: SiteState = initState,
-    action : SiteAction
-): SiteState => {
-    switch ( action.type ) {
+    state: IRootState = initState,
+    action : IRootAction
+): IRootState => {
+    switch ( action.type ) {       
         case "LogIn" :
-            return  {
-                ...state,
-                curPage : "MainPage",
-                curUserFio : "Іваноў І.І."
-            }; 
-        case "LogOut" : 
             return {
                 ...state,
-                curPage : "LoginPage",
-                curSubPage : "Tasks",
-                curUserId : -1,
-                curUserFio : ""
-            }; 
-        case "GoToSubPage" :               
-                return {
-                    ...state,
-                    curPage : "MainPage",
-                    curSubPage: action.curSubPage||"MainMenu"
-                };
-        case "ShowTest" :
-                return {
-                    ...state,
-                    curTestSet : action.curTestSet || '',
-                    curSubPage : "TestPage",
-                }
+                curUser : action.newUserData || state.curUser,
+                curPage : "MainPage",
+                curSubPage: action.newUserData?.UserFIO === "Admin" ? "AdminAddTask" : "UserTasks"
+            };
+        case "ShowSubPage": 
+            return {
+                ...state,
+                curSubPage : action.newSubPage || state.curSubPage
+            };
+        case "LogOut" :
+            return {
+                ...state,
+                curPage : "LoginPage"
+            }
         default :
             return state;
     }    

@@ -1,53 +1,236 @@
+/* LoginPage */
+.LoginPage {
+  width: 300px;
+  height: 300px;
 
-/*  */
-.bntCenter {
-  left: 40%;
+  position: absolute;
+  right: 10%;
+  top: 10%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;  
+  justify-content: space-around;
+
+  box-shadow: 1px 1px 2px 2px lightgrey;
 }
 
-.userTestsResultsTab, .Tasks, .NavBar a{
-  font-size: 1.5rem;
+/* MainPage */
+.NavBar_1 {
+  display: flex;
+  justify-content: space-between;
 }
-.userTestsResultsTabTr:hover {
-  border-radius: 15rem;
-  background-color: lightblue;
+.NavBar button {
+    font-size: 1rem;
 }
-/* TestPage */
-.TestPageBut {
+.NavBar_Nav Button:hover{
+  color: lightseagreen;
+}
+.NavBar_Nav {
+  display: flex;
+  flex-direction: row;  
+}
+
+.MainPage .container {
+  width: 1000px;
+  height: 700px;
+
   position: absolute;
   left: 50%;
-  top: 98%;
-  width: 200px;
-  margin-left: -100px;
+  top: 15%;
+  margin-left: -500px;
+  
+  display: flex;
+  align-items: flex-start;  
+  justify-content: space-around;
+}
+/* TestPage */
+.TestPage { 
+  width: 100%;   
+}
+.TP_but { 
+  position: relative;
+  left: 40%; 
+  top: 100%;
+  width: 200px;  
   font-size: 1.3rem;
 }
 /* TestTemplateA */
-.TestPageTemplateA {
-
+.TestPageTemplateA_0 {
   display: flex;
   flex-direction: column;
-
   height: 700px;
 }
-.TestPageTemplateA p {
-  text-align: center;
-  font-size: 2.5rem;
-  padding-top: 3rem;
 
+.TestPageTemplateA_0 p {
+  text-align: center;
+  font-size: 3rem;
 }
-.TPT_A {
-  width: 300px;
+.TPT_A_0 {
+  width: 500px;
   height: 300px;  
+  left: 50%;
+  margin-left: -200px;
+  position: absolute;
+  top: 35%;
+  display: flex;
+
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+.TPT_A_0 .MuiFormControlLabel-label {
+  font-size: 2rem;
+}
+/* TestTemplatePageA_1 */
+.TPT_A_1 {
+  width: 1000px; 
+  height: 400px;
+  top: 30%; 
+  margin-left: -500px;
+  justify-content: space-between;
+}
+.TPT_A_1 .MuiFormControlLabel-label {
+  font-size: 20px;
+}
+/* TestTemplatePageA_2 */
+.TestPageTemplateA_2{
+  display: flex;
+  flex-direction: column;
+  height: 700px;
+  top: 15%;
+  align-items: center;
+  justify-content: space-between;
+}
+.TPT_A_2_q {
+  width: 100%;
+  top: 0;
+  font: 20px;
+  text-align: center;
+}
+.TPT_A_2_qt {
+  width: 100%;
+  font: 2px;
+  padding-top: 150px;
+  text-align: center;
+  
+}
+.TPT_A_2 {
+  display: flex;
+
+  flex-direction: column;
+  align-items: flex-start;
+
+  top: 500px;
+  height: 150px;
+  width: 600px;
+  left: 50%;
+  margin-left: -200px;
+}
+.TPT_A_2 .MuiFormControlLabel-label {
+  font-size: 20px;
+}
+/* TestTemplatePageB_0 */
+.TestPageTemplateB_0 {
+  width: 1000px;
+  height: 500px;
+  padding-bottom: 200px;
+
   display: flex;
 
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  text-align: center;
+  
 }
-.TPT_A span input {
-  width: 20px;
-  height: 20px;
+.TestPageTemplateB_0 ul {
+  padding-top: 1rem;
 }
-.TPT_A span label {
-  font-size: 2rem;
+.TestPageTemplateB_0 li {
+  font-size: 25px;
+  list-style-type: none;
 }
+/* Admin Add task */
+.AdminAddTask{
+  width: 800px;
+  height: 100px;
 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.AdminAddTask input[type="date"] {
+  margin-top: 10px;
+}
+.AdminAddTask Button{
+  top: 60%;
+  left: -30%;
+}
+/* AdminTestInfo */
+.AdminTestInfo {
+  position: absolute;
+  width: 1000px;
+  height: auto;
+  left: 50%;
+  top: 50%;
+  margin-left: -500px;
+  margin-top: -400px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+}
+.ATI_tabA{
+  width : 1050px;
+  padding-left: -50px;   
+  margin-bottom: 50px;
+}
+.ATI_tabA tr {
+  height: 30px;
+}
+.ATI_tabA td {
+  width: 30px;
+  text-align: center;
+  border-right: 1px solid lightgray;
+  font-size: 25px;
+}
+.ATI_tabB{
+  width: auto;
+}
+.ATI_tabB tr {
+  height: 30px;
+}
+.ATI_tabB td {
+  width: 30px;
+  text-align: center;
+  border-right: 1px solid lightgray;
+  font-size: 25px;
+}
+.AdminTestInfo table thead {
+  border: 1px solid black;
+}
+.ATI_AQ {
+  margin-top: 50px;
+}
+.ATI_ANS_tr_right {
+  color: green;
+}
+.ATI_ANS_td_wrong {
+  color: red;
+}
+.ATI_p {
+  font: 40px "Times New Roman";
+  width: 100%;
+  text-align: center;
+}
+.AStat_tab{
+  width: 500px;
+  border: 1px solid black;
+}
+/* UsersResults */
+.UserResultsTab{
+   max-height: 600px;     
+   overflow-y: auto;    
+   overflow-x: hidden;
+}
