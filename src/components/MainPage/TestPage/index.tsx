@@ -1,6 +1,7 @@
 import { Button } from '@material-ui/core';
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { Dispatch } from 'redux';
 import { TestBase } from '../../../store/Tests';
 import { TestTemplate_A_0 } from './TestPageTemplates/TestPageTemplate_A_0';
 import { TestTemplate_A_1 } from './TestPageTemplates/TestPageTemplate_A_1';
@@ -22,9 +23,15 @@ const shuffle = (array:any[]):void => {
   }
 
 export const TestPage:React.FC = () => {
+    const dispatch:Dispatch<any> = useDispatch();
     const curTestName = useSelector((state:IRootState) => state.curTestName);    
     const [ curTestsQuests, setCurTestsQuests ] = useState<any[]>([]);
+
     const [ curQuestIndex, incrQuestIndex ] = useState(0);
+    const [ rightCount, incrRightCount ] = useState(0);
+
+    const curUserAnswer = useSelector((state:IRootState) => state.curUserAnswer);
+
     const [ rArr, setRArr ] = useState<string[]>([]);
     const [ rTypes, setRTypes ] = useState<string[]>([]);
     const [ rAnswers, setRAnswers ] = useState<string[]>([]); 
@@ -36,7 +43,7 @@ export const TestPage:React.FC = () => {
         TestBase.map ( (el:any) => {
             if ( el.testSetName === curTestName ) {
                 let qq:any = el.questions;
-                shuffle(qq);
+                //shuffle(qq);
                 qq.map ( (al:IQuest) => {
                         switch (al.type) {
                             case "A_0" :
@@ -60,11 +67,34 @@ export const TestPage:React.FC = () => {
         setCurTestsQuests( curTestsSet );
     },[ curTestName])
 
+
+    const clickHandler = () => {
+        if (curUserAnswer === rArr[curQuestIndex]) {
+            alert ("Right");
+            incrRightCount( rightCount +1 );
+        };
+        if ( curQuestIndex < curTestsQuests.length -1) {
+            incrQuestIndex( curQuestIndex + 1);
+            dispatch({
+                type :"SetUserAnswer",
+                curUserAnswer : ""
+            })        
+        }
+        else {
+            alert(`Right count: ${rightCount} of ${curTestsQuests.length} ( ${ rightCount/curTestsQuests.length*100})`)
+            dispatch({
+                type : "ShowSubPage",
+                newSubPage: "UserTasks"
+            })
+        }
+        
+    };
+
     return (
         <div className = "TestPage">                
             { curTestsQuests[curQuestIndex]}
             <Button
-                onClick = { ()=> { incrQuestIndex( curQuestIndex + 1) }}
+                onClick = { clickHandler }
                 >Answer</Button>
         </div>
     )
