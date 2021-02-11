@@ -1,9 +1,9 @@
 import React from "react";
-import { UserTasksTable } from './UserTasksTable';
+import { UserResultsTab } from './UserTasksTable';
 export const UserTasks: React.FC = () => {
     return (
         <div className = "UserTasks">
-            <UserTasksTable />
+            <UserResultsTab />
         </div>
     )
 }

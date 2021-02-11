@@ -1,46 +1,50 @@
-import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow } from '@material-ui/core';
+import { makeStyles, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow } from '@material-ui/core';
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 
+const useStyles = makeStyles({
+    tablecell : {
+        fontSize: "25px",
+    },
+  });
+
 export const UserResultsTab: React.FC = () => {
+    const classes = useStyles();
     const curUserFIO = useSelector((state:IRootState) => state.curUser.UserFIO);
     const [ curShowTasks, setCurShowTasks ] = useState<any[]>([]);
-    // ;
-    useEffect(()=>{
-        let arr:any[] = [];
-        fetch(`$sql = "SELECT * FROM 'cab2021_tasks' WHERE USER_FIO LIKE '".$_GET["request_user_fio"]."' "`)
+
+    useEffect(()=>{        
+        fetch(`https://cab07.000webhostapp.com/new_refact/new_user_getTestsResults.php?request_user_fio=${curUserFIO}`)
         .then( (res)=>res.json())
         .then (
-            (result) => {
-                result.tasks.map ( (el:any) => {
-                    arr.push(
-                        <TableRow
-                                hover
-                                role="checkbox"
-                                tabIndex={-1}
-                                key={el.task_id}>
-                                <TableCell key={el.task_id+"1"} align="center">{el.task_test_name}</TableCell>
-                                <TableCell key={el.task_id+"3"} align="center">{el.task_end_time}</TableCell>
-                                <TableCell key={el.task_id+"3"} align="center">{el.task_attempts_count}</TableCell>
-                            </TableRow>
+            (result) => {           
+                let arr:any[] = [];     
+                result.results.map ( (el:any) => {
+                    arr.push(                     
+                        {
+                            test_id : el.test_id,
+                            test_name: el.test_name,
+                            dateTime: el.dateTime,
+                            result: el.result
+                        }
                     )
-                })                    
+                })  
+                setCurShowTasks(arr);                  
             }
-        );
-        setCurShowTasks(arr);
+        );               
     },[curUserFIO]);
     return (
-        <div className="UserResultsTab">
-            asdsd
+        <div className="UserResultsTab">           
             <Paper>
                 <TableContainer>
-                    <Table stickyHeader aria-label="sticky table" className="UserResultsTab">
+                    <Table stickyHeader aria-label="sticky table" className="UserResultsTab" >
                         <TableHead>
                             <TableRow>
                                 <TableCell
                                     key={"01"}
                                     align="center"
                                     style={{ minWidth: "250px" }}
+                                    className={classes.tablecell}
                                 >
                                     TableName
                                 </TableCell>
@@ -48,6 +52,7 @@ export const UserResultsTab: React.FC = () => {
                                     key={"02"}
                                     align="center"
                                     style={{ minWidth: "200px" }}
+                                    className={classes.tablecell}
                                 >
                                     TabDate
                                 </TableCell>
@@ -55,13 +60,24 @@ export const UserResultsTab: React.FC = () => {
                                     key={"03"}
                                     align="center"
                                     style={{ minWidth: "100px" }}
+                                    className={classes.tablecell}
                                 >
                                     TestResult
                                 </TableCell>
                             </TableRow>
                         </TableHead>
-                        <TableBody >
-                            {curShowTasks}
+                        <TableBody>     
+                            { curShowTasks.map ( el => {
+                                return (
+                                    <TableRow 
+                                        hover
+                                        key = {el.test_id} >
+                                        <TableCell align="center" key={el.test_id+"01"} className={classes.tablecell}>{el.test_name}</TableCell>
+                                        <TableCell align="center" key={el.test_id+"02"} className={classes.tablecell}>{el.dateTime}</TableCell>
+                                        <TableCell align="center" key={el.test_id+"02"} className={classes.tablecell}>{el.result}</TableCell>
+                                    </TableRow>  
+                                )
+                            } )}
                         </TableBody>
                     </Table>
                 </TableContainer>

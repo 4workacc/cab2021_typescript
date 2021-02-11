@@ -229,8 +229,12 @@
   border: 1px solid black;
 }
 /* UsersResults */
-.UserResultsTab{
-   max-height: 600px;     
+.UserResultsTab, .UserTasksTab{
+   max-height: 700px;   
+   width: 1000px;  
    overflow-y: auto;    
-   overflow-x: hidden;
+   overflow-x: hidden;  
+}
+.tablecell{
+  font-size: 25px;
 }
