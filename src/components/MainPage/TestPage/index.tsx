@@ -13,19 +13,31 @@ interface IQuest {
     type: string,
     answers?: any,
     questText?: any,
-    questTextArr?:string[]
-}
+    questTextArr?:string[],
+    id?:string,
+    right?:string,
+};
+const shuffle = (array:any[]):void => {
+    array.sort(() => Math.random() - 0.5);
+  }
 
 export const TestPage:React.FC = () => {
     const curTestName = useSelector((state:IRootState) => state.curTestName);    
     const [ curTestsQuests, setCurTestsQuests ] = useState<any[]>([]);
     const [ curQuestIndex, incrQuestIndex ] = useState(0);
+    const [ rArr, setRArr ] = useState<string[]>([]);
+    const [ rTypes, setRTypes ] = useState<string[]>([]);
+    const [ rAnswers, setRAnswers ] = useState<string[]>([]); 
 
-    useEffect (() => {
+    useEffect (() => { 
         let curTestsSet:any[]= [];
+        let rr:any[] = [];
+        let tt:any[] = [];
         TestBase.map ( (el:any) => {
             if ( el.testSetName === curTestName ) {
-                el.questions.map ( (al:IQuest) => {
+                let qq:any = el.questions;
+                shuffle(qq);
+                qq.map ( (al:IQuest) => {
                         switch (al.type) {
                             case "A_0" :
                                 curTestsSet.push(<TestTemplate_A_0 quest={al.quest} answers={al.answers} />); break;
@@ -37,10 +49,14 @@ export const TestPage:React.FC = () => {
                                 curTestsSet.push(<TestTemplate_B_0 quest={al.quest} questText = {al.questText} />); break;
                             case "B_1" :
                                 curTestsSet.push(<TestTemplate_B_1 quest={al.quest} questTextArr = {al.questTextArr || []}/>); break;
-                        }
+                        };
+                        rr.push(al.right);
+                        tt.push(al.id);                        
                 })
             };
-        });        
+        });   
+        setRArr(rr);
+        setRTypes(tt);                 
         setCurTestsQuests( curTestsSet );
     },[ curTestName])
 

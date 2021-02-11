@@ -5,7 +5,9 @@ import {
   makeStyles,
   Typography,
 } from "@material-ui/core";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { Dispatch } from "redux";
 
 interface ITT_A_0_props {
   quest: string;
@@ -29,12 +31,20 @@ const useStyles = makeStyles({
 });
 
 export const TestTemplate_A_0 = ({quest, answers}:ITT_A_0_props) => {
+  const dispatch:Dispatch<any> = useDispatch();
   const classes = useStyles();
   const [ ch0, setCh0 ] = useState(false);
   const [ ch1, setCh1 ] = useState(false);
   const [ ch2, setCh2 ] = useState(false);
   const [ ch3, setCh3 ] = useState(false);
   const [ ch4, setCh4 ] = useState(false);
+
+  useEffect(()=>{
+    dispatch({
+        type: "SetUserAnswer",
+        curUserAnswer : `${ch0?"1":""}${ch1?"2":""}${ch2?"3":""}${ch3?"4":""}${ch4?"5":""}`
+    });
+  },[ch0, ch1, ch2, ch3, ch4])
   
   return (
     <div className="TT_A_0">

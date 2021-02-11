@@ -27,7 +27,12 @@ const rootReducer = (
                 ...state,
                 curTestName: action.testName || "",
                 curSubPage : "TestPage"
-            }
+            };
+        case "SetUserAnswer" : 
+            return {
+                ...state,
+                curUserAnswer: action.curUserAnswer || ""
+            };
         default :
             return state;
     }    
