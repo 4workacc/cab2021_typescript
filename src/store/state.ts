@@ -9,5 +9,5 @@ export const initState: IRootState = {
         UserClass : "",
     },
     
-    curTestID: -1
+    curTestName: ""
 }

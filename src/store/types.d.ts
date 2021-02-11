@@ -9,12 +9,12 @@ interface IRootState {
   curPage: string;
   curSubPage: string;
   curUser: IUserData;
-  curTestID?: number;
+  curTestName?: string;
 }
 
 interface IRootAction {
   type: string;
   newUserData?: IUserData;
   newSubPage?: string;
-  testID?: number;
+  testName?: string;
 }

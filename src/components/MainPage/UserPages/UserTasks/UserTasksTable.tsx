@@ -35,10 +35,10 @@ export const UserResultsTab: React.FC = () => {
             }
         );               
     },[curUserFIO]);
-    const userTaksTrClickHandler = (id: number ) => {
+    const userTaksTrClickHandler = (nam: string ) => {
         dispatch ({
             type : "ShowTest",
-            testID : id
+            testName : nam
         })
     }
     return (
@@ -80,7 +80,7 @@ export const UserResultsTab: React.FC = () => {
                                     <TableRow 
                                         hover
                                         key = {el.test_id} 
-                                        onClick = { () => { userTaksTrClickHandler(el.test_id)}}>
+                                        onClick = { () => { userTaksTrClickHandler(el.test_name)}}>
                                         <TableCell align="center" key={el.test_id+"01"} className={classes.tablecell}>{el.test_name}</TableCell>
                                         <TableCell align="center" key={el.test_id+"02"} className={classes.tablecell}>{el.dateTime}</TableCell>
                                         <TableCell align="center" key={el.test_id+"02"} className={classes.tablecell}>{el.attepts_count}</TableCell>
