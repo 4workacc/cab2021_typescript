@@ -5,12 +5,15 @@ import { TestBase } from '../../../store/Tests';
 import { TestTemplate_A_0 } from './TestPageTemplates/TestPageTemplate_A_0';
 import { TestTemplate_A_1 } from './TestPageTemplates/TestPageTemplate_A_1';
 import { TestTemplate_A_2 } from './TestPageTemplates/TestPageTemplate_A_2';
+import { TestTemplate_B_0 } from './TestPageTemplates/TestPageTemplate_B_0';
+import { TestTemplate_B_1 } from './TestPageTemplates/TestPageTemplate_B_1';
 
 interface IQuest {
     quest: string,
     type: string,
     answers?: any,
     questText?: any,
+    questTextArr?:string[]
 }
 
 export const TestPage:React.FC = () => {
@@ -30,6 +33,10 @@ export const TestPage:React.FC = () => {
                                 curTestsSet.push(<TestTemplate_A_1 quest={al.quest} answers={al.answers} />); break;
                             case "A_2" :
                                 curTestsSet.push(<TestTemplate_A_2 quest={al.quest} questText = {al.questText} answers={al.answers} />); break;
+                            case "B_0" :
+                                curTestsSet.push(<TestTemplate_B_0 quest={al.quest} questText = {al.questText} />); break;
+                            case "B_1" :
+                                curTestsSet.push(<TestTemplate_B_1 quest={al.quest} questTextArr = {al.questTextArr || []}/>); break;
                         }
                 })
             };

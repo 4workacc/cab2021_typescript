@@ -87,26 +87,7 @@
   justify-content: space-around;
 }
 /* TestTemplatePageB_0 */
-.TestPageTemplateB_0 {
-  width: 1000px;
-  height: 500px;
-  padding-bottom: 200px;
 
-  display: flex;
-
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  text-align: center;
-  
-}
-.TestPageTemplateB_0 ul {
-  padding-top: 1rem;
-}
-.TestPageTemplateB_0 li {
-  font-size: 25px;
-  list-style-type: none;
-}
 /* Admin Add task */
 .AdminAddTask{
   width: 800px;
