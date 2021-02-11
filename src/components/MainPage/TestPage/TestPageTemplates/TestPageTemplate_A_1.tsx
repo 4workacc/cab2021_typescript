@@ -7,19 +7,24 @@ import {
 } from "@material-ui/core";
 import React, { useState } from "react";
 
-interface ITT_A_0_props {
+interface ITT_A_1_props {
   quest: string;
   answers: string[];
 }
 
 const useStyles = makeStyles({
+  group: {
+    display: "flex",
+    justifyContent: "space-around",
+    height: "500px",
+  },
   quest : {
-      fontSize: 60,
+      fontSize: 50,
       width: "100%",    
       textAlign: "center"  
   },
   lab: {
-    fontSize: 40,
+    fontSize: 25,
     marginLeft: 30,
   },
   checkbox: {
@@ -28,7 +33,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const TestTemplate_A_0 = ({quest, answers}:ITT_A_0_props) => {
+export const TestTemplate_A_1 = ({quest, answers}:ITT_A_1_props) => {
   const classes = useStyles();
   const [ ch0, setCh0 ] = useState(false);
   const [ ch1, setCh1 ] = useState(false);
@@ -37,9 +42,10 @@ export const TestTemplate_A_0 = ({quest, answers}:ITT_A_0_props) => {
   const [ ch4, setCh4 ] = useState(false);
   
   return (
-    <div className="TT_A_0">
+    <div className="TT_A_1">
       <p className = {classes.quest}>{quest}</p>
-      <FormGroup>
+      <div className = "TT_A_1_container">
+      <FormGroup className={classes.group}>
         <FormControlLabel
           className={classes.lab}
           control={
@@ -51,7 +57,7 @@ export const TestTemplate_A_0 = ({quest, answers}:ITT_A_0_props) => {
             />
           }
           label={<Typography className={classes.lab}>{answers[0]}</Typography>}
-        />
+        />        
         <FormControlLabel
           className={classes.lab}
           control={
@@ -93,6 +99,7 @@ export const TestTemplate_A_0 = ({quest, answers}:ITT_A_0_props) => {
           label={<Typography className={classes.lab}>{answers[4]}</Typography>}
         />
       </FormGroup>
+      </div>
     </div>
   );
 };

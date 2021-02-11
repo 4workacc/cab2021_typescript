@@ -7,19 +7,31 @@ import {
 } from "@material-ui/core";
 import React, { useState } from "react";
 
-interface ITT_A_0_props {
+interface ITT_A_2_props {
   quest: string;
+  questText: string;
   answers: string[];
 }
 
 const useStyles = makeStyles({
+  group: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-around",
+    height: "250px"
+  },
   quest : {
-      fontSize: 60,
+      fontSize: 35,
       width: "100%",    
       textAlign: "center"  
   },
+  questText : {
+    fontSize: 20,
+    width: "100%",    
+    textAlign: "center"  
+  },
   lab: {
-    fontSize: 40,
+    fontSize: 15,
     marginLeft: 30,
   },
   checkbox: {
@@ -28,7 +40,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const TestTemplate_A_0 = ({quest, answers}:ITT_A_0_props) => {
+export const TestTemplate_A_2 = ({quest, questText, answers}:ITT_A_2_props) => {
   const classes = useStyles();
   const [ ch0, setCh0 ] = useState(false);
   const [ ch1, setCh1 ] = useState(false);
@@ -37,9 +49,11 @@ export const TestTemplate_A_0 = ({quest, answers}:ITT_A_0_props) => {
   const [ ch4, setCh4 ] = useState(false);
   
   return (
-    <div className="TT_A_0">
+    <div className="TT_A_2">
       <p className = {classes.quest}>{quest}</p>
-      <FormGroup>
+      <p className = {classes.questText}>{questText}</p>
+      <div className = "TT_A_2_container">
+      <FormGroup className={classes.group}>
         <FormControlLabel
           className={classes.lab}
           control={
@@ -51,7 +65,7 @@ export const TestTemplate_A_0 = ({quest, answers}:ITT_A_0_props) => {
             />
           }
           label={<Typography className={classes.lab}>{answers[0]}</Typography>}
-        />
+        />        
         <FormControlLabel
           className={classes.lab}
           control={
@@ -93,6 +107,7 @@ export const TestTemplate_A_0 = ({quest, answers}:ITT_A_0_props) => {
           label={<Typography className={classes.lab}>{answers[4]}</Typography>}
         />
       </FormGroup>
+      </div>
     </div>
   );
 };

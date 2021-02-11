@@ -36,35 +36,15 @@
 
   position: absolute;
   left: 50%;
-  top: 15%;
+  top: 10%;
   margin-left: -500px;
   
   display: flex;
   align-items: flex-start;  
-  justify-content: space-around;
-}
-/* TestPage */
-.TestPage { 
-  width: 100%;   
-}
-.TP_but { 
-  position: relative;
-  left: 40%; 
-  top: 100%;
-  width: 200px;  
-  font-size: 1.3rem;
-}
-/* TestTemplateA */
-.TestPageTemplateA_0 {
-  display: flex;
-  flex-direction: column;
-  height: 700px;
+  justify-content: space-between;
+ 
 }
 
-.TestPageTemplateA_0 p {
-  text-align: center;
-  font-size: 3rem;
-}
 /* TestTemplate_A_0 */
 .TT_A_0{
   width: 1000px;
@@ -76,53 +56,35 @@
   align-items: center;
   justify-content: space-around;
 }
-/* TestTemplatePageA_1 */
-.TPT_A_1 {
-  width: 1000px; 
-  height: 400px;
-  top: 30%; 
-  margin-left: -500px;
-  justify-content: space-between;
+/* TT_A_1 */
+.TT_A_1{
+  width: 1000px;
+  height: 700px;
+  
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: space-around;
 }
-.TPT_A_1 .MuiFormControlLabel-label {
-  font-size: 20px;
+.TT_A_1_container {
+  width: 1000px;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
 }
 /* TestTemplatePageA_2 */
-.TestPageTemplateA_2{
-  display: flex;
-  flex-direction: column;
+.TT_A_2{
+  width: 1000px;
   height: 700px;
-  top: 15%;
-  align-items: center;
-  justify-content: space-between;
-}
-.TPT_A_2_q {
-  width: 100%;
-  top: 0;
-  font: 20px;
-  text-align: center;
-}
-.TPT_A_2_qt {
-  width: 100%;
-  font: 2px;
-  padding-top: 150px;
-  text-align: center;
   
-}
-.TPT_A_2 {
   display: flex;
-
   flex-direction: column;
-  align-items: flex-start;
 
-  top: 500px;
-  height: 150px;
-  width: 600px;
-  left: 50%;
-  margin-left: -200px;
-}
-.TPT_A_2 .MuiFormControlLabel-label {
-  font-size: 20px;
+  align-items: center;
+  justify-content: space-around;
 }
 /* TestTemplatePageB_0 */
 .TestPageTemplateB_0 {
