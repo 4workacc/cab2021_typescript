@@ -21,6 +21,12 @@ const rootReducer = (
             return {
                 ...state,
                 curPage : "LoginPage"
+            };
+        case "ShowTest" :
+            return {
+                ...state,
+                curTestID: action.testID || -1,
+                curSubPage : "TestPage"
             }
         default :
             return state;

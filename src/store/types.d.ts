@@ -1,18 +1,20 @@
 interface IUserData {
-  UserId: number,
-  UserFIO: string,
-  UserSchool?: string,
-  UserClass?: string
+  UserId: number;
+  UserFIO: string;
+  UserSchool?: string;
+  UserClass?: string;
 }
 
-interface IRootState{
-  curPage: string,
-  curSubPage: string,
-  curUser: IUserData
+interface IRootState {
+  curPage: string;
+  curSubPage: string;
+  curUser: IUserData;
+  curTestID?: number;
 }
 
 interface IRootAction {
-    type: string,
-    newUserData?: IUserData,
-    newSubPage?: string
+  type: string;
+  newUserData?: IUserData;
+  newSubPage?: string;
+  testID?: number;
 }

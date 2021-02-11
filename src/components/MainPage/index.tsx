@@ -9,6 +9,8 @@ import { AdminAddTask } from "./AdminPages/AdminAddTask";
 import { AdminResults } from "./AdminPages/AdminResults";
 import { AdminStatistics } from "./AdminPages/AdminStatistics";
 
+import { TestPage } from './TestPage';
+
 export const MainPage:React.FC = () => {  
     const curStateCurSubPage= useSelector((state:IRootState) => state.curSubPage); 
     const [ curShowSubPage, setCurShowSubPage ] = useState<any>();
@@ -30,6 +32,9 @@ export const MainPage:React.FC = () => {
                 break;
             case "UserResults" : 
                 el = <UserResults />;
+                break;
+            case "TestPage" : 
+                el = <TestPage />;
                 break;
             default :
                 el = <UserTasks />;

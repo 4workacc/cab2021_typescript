@@ -7,5 +7,7 @@ export const initState: IRootState = {
         UserFIO : '',
         UserSchool : "",
         UserClass : "",
-    }    
+    },
+    
+    curTestID: -1
 }

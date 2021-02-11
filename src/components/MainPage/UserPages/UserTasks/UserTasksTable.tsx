@@ -1,6 +1,7 @@
 import { makeStyles, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow } from '@material-ui/core';
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { Dispatch } from 'redux';
 
 const useStyles = makeStyles({
     tablecell : {
@@ -10,6 +11,7 @@ const useStyles = makeStyles({
 
 export const UserResultsTab: React.FC = () => {
     const classes = useStyles();
+    const dispatch:Dispatch<any> = useDispatch();
     const curUserFIO = useSelector((state:IRootState) => state.curUser.UserFIO);
     const [ curShowTasks, setCurShowTasks ] = useState<any[]>([]);
 
@@ -33,6 +35,12 @@ export const UserResultsTab: React.FC = () => {
             }
         );               
     },[curUserFIO]);
+    const userTaksTrClickHandler = (id: number ) => {
+        dispatch ({
+            type : "ShowTest",
+            testID : id
+        })
+    }
     return (
         <div className="UserTasksTab">           
             <Paper>
@@ -71,7 +79,8 @@ export const UserResultsTab: React.FC = () => {
                                 return (
                                     <TableRow 
                                         hover
-                                        key = {el.test_id} >
+                                        key = {el.test_id} 
+                                        onClick = { () => { userTaksTrClickHandler(el.test_id)}}>
                                         <TableCell align="center" key={el.test_id+"01"} className={classes.tablecell}>{el.test_name}</TableCell>
                                         <TableCell align="center" key={el.test_id+"02"} className={classes.tablecell}>{el.dateTime}</TableCell>
                                         <TableCell align="center" key={el.test_id+"02"} className={classes.tablecell}>{el.attepts_count}</TableCell>
