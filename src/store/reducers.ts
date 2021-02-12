@@ -26,6 +26,7 @@ const rootReducer = (
             return {
                 ...state,
                 curTestName: action.testName || "",
+                curTestId : action.testId || -1,
                 curSubPage : "TestPage"
             };
         case "SetUserAnswer" : 

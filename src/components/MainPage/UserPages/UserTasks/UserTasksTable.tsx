@@ -15,7 +15,7 @@ export const UserResultsTab: React.FC = () => {
     const curUserFIO = useSelector((state:IRootState) => state.curUser.UserFIO);
     const [ curShowTasks, setCurShowTasks ] = useState<any[]>([]);
 
-    useEffect(()=>{        
+    const getTabData = ( ) => {
         fetch(`https://cab07.000webhostapp.com/new_refact/new_user_getTasks.php?request_user_fio=${curUserFIO}`)
         .then( (res)=>res.json())
         .then (
@@ -33,12 +33,19 @@ export const UserResultsTab: React.FC = () => {
                 })  
                 setCurShowTasks(arr);                  
             }
-        );               
+        );      
+    }
+    useEffect (()=>{
+        getTabData();
+    },[])
+    useEffect(()=>{        
+        getTabData();   
     },[curUserFIO]);
-    const userTaksTrClickHandler = (nam: string ) => {
+    const userTaksTrClickHandler = (nam: string, id:number ) => {
         dispatch ({
             type : "ShowTest",
-            testName : nam
+            testName : nam,
+            testId: id
         })
     }
     return (
@@ -54,7 +61,7 @@ export const UserResultsTab: React.FC = () => {
                                     style={{ minWidth: "250px" }}
                                     className={classes.tablecell}
                                 >
-                                    Test name
+                                    Назва тэста
                                 </TableCell>
                                 <TableCell
                                     key={"02"}
@@ -62,7 +69,7 @@ export const UserResultsTab: React.FC = () => {
                                     style={{ minWidth: "200px" }}
                                     className={classes.tablecell}
                                 >
-                                    Test Date
+                                    Дата выканання
                                 </TableCell>
                                 <TableCell
                                     key={"03"}
@@ -70,7 +77,7 @@ export const UserResultsTab: React.FC = () => {
                                     style={{ minWidth: "100px" }}
                                     className={classes.tablecell}
                                 >
-                                    Attempts count
+                                    Колькасць спроб
                                 </TableCell>
                             </TableRow>
                         </TableHead>
@@ -80,7 +87,7 @@ export const UserResultsTab: React.FC = () => {
                                     <TableRow 
                                         hover
                                         key = {el.test_id} 
-                                        onClick = { () => { userTaksTrClickHandler(el.test_name)}}>
+                                        onClick = { () => { userTaksTrClickHandler(el.test_name, el.test_id)}}>
                                         <TableCell align="center" key={el.test_id+"01"} className={classes.tablecell}>{el.test_name}</TableCell>
                                         <TableCell align="center" key={el.test_id+"02"} className={classes.tablecell}>{el.dateTime}</TableCell>
                                         <TableCell align="center" key={el.test_id+"02"} className={classes.tablecell}>{el.attepts_count}</TableCell>

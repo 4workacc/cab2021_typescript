@@ -18,10 +18,12 @@ export const UserResultsTab: React.FC = () => {
         .then( (res)=>res.json())
         .then (
             (result) => {           
-                let arr:any[] = [];     
+                let arr:any[] = [];   
+
                 result.results.map ( (el:any) => {
                     arr.push(                     
-                        {
+                        {   
+                            task_id: el.task_id,
                             test_id : el.test_id,
                             test_name: el.test_name,
                             dateTime: el.dateTime,
@@ -29,7 +31,7 @@ export const UserResultsTab: React.FC = () => {
                         }
                     )
                 })  
-                setCurShowTasks(arr);                  
+                setCurShowTasks(arr.reverse());                  
             }
         );               
     },[curUserFIO]);
@@ -46,7 +48,7 @@ export const UserResultsTab: React.FC = () => {
                                     style={{ minWidth: "250px" }}
                                     className={classes.tablecell}
                                 >
-                                    TableName
+                                   Назва тэста
                                 </TableCell>
                                 <TableCell
                                     key={"02"}
@@ -54,7 +56,7 @@ export const UserResultsTab: React.FC = () => {
                                     style={{ minWidth: "200px" }}
                                     className={classes.tablecell}
                                 >
-                                    TabDate
+                                    Дата выканання
                                 </TableCell>
                                 <TableCell
                                     key={"03"}
@@ -62,7 +64,7 @@ export const UserResultsTab: React.FC = () => {
                                     style={{ minWidth: "100px" }}
                                     className={classes.tablecell}
                                 >
-                                    TestResult
+                                    Вынік
                                 </TableCell>
                             </TableRow>
                         </TableHead>
@@ -72,7 +74,7 @@ export const UserResultsTab: React.FC = () => {
                                     <TableRow 
                                         hover
                                         key = {el.test_id} >
-                                        <TableCell align="center" key={el.test_id+"01"} className={classes.tablecell}>{el.test_name}</TableCell>
+                                        <TableCell align="center" key={el.test_id+"01"} className={classes.tablecell}>{el.test_name}_{el.task_id}</TableCell>
                                         <TableCell align="center" key={el.test_id+"02"} className={classes.tablecell}>{el.dateTime}</TableCell>
                                         <TableCell align="center" key={el.test_id+"02"} className={classes.tablecell}>{el.result}</TableCell>
                                     </TableRow>  

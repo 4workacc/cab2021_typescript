@@ -36,19 +36,19 @@ export const NavBar:React.FC = () => {
                     <MenuItem
                         onClick = { () => {
                             NavMenuClickHanlder("AdminAddTask")
-                        }}>Add task</MenuItem>
+                        }}>Дадаць заданне</MenuItem>
                     <MenuItem
                         onClick = { () => {
                             NavMenuClickHanlder("AdminResults")
-                        }}>Show result</MenuItem>
+                        }}>Вынікі тэстаў</MenuItem>
                     <MenuItem
                         onClick = { () => {
                             NavMenuClickHanlder("AdminStatistics")
-                        }}>Statistic</MenuItem>
+                        }}>Статыстыка</MenuItem>
                     <MenuItem
                         onClick = { () => {
                             NavMenuExitHandler();
-                        }}>Exit</MenuItem>
+                        }}>Выхад</MenuItem>
                     </>
             );
         }        
@@ -58,15 +58,15 @@ export const NavBar:React.FC = () => {
                     <MenuItem
                         onClick = { () => {
                             NavMenuClickHanlder("UserTasks")
-                        }}>My tasks</MenuItem>
+                        }}>Заданні</MenuItem>
                     <MenuItem
                         onClick = { () => {
                             NavMenuClickHanlder("UserResults")
-                        }}>My results</MenuItem>                
+                        }}>Вынікі тэстаў</MenuItem>                
                     <MenuItem
                         onClick = { () => {
                             NavMenuExitHandler();
-                        }}>Exit</MenuItem>
+                        }}>Выхад</MenuItem>
                     </>
             );
         }
@@ -77,7 +77,7 @@ export const NavBar:React.FC = () => {
         <div className = "NavBar">
             <AppBar position="static" className="NavBar">
                 <Toolbar className="NavBar_1">
-                    <Button color="inherit"> {`Welcome, ${curUserData.UserFIO}`}</Button>       
+                    <Button color="inherit"> {`Прывітанне,  ${curUserData.UserFIO}`}</Button>       
                     <div className="NavBar_Nav">{curNavMenu}</div>
                 </Toolbar>
             </AppBar>

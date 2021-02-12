@@ -11,6 +11,7 @@ interface IRootState {
   curUser: IUserData;
   curTestName?: string;
   curUserAnswer?:string;
+  curTestId?: number;
 }
 
 interface IRootAction {
@@ -19,4 +20,5 @@ interface IRootAction {
   newSubPage?: string;
   testName?: string;
   curUserAnswer?:string;
+  testId?: number;
 }

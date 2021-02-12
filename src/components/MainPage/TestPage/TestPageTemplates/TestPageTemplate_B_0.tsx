@@ -37,7 +37,7 @@ export const TestTemplate_B_0 = ({quest, questText}:ITT_B_0_props) => {
     <div className={classes.container}>
       <p className = {classes.quest}>{quest}</p>
       <p className = {classes.questText}>{questText}</p>
-      <TextField id="outlined-basic" label="Answer" variant="outlined" />
+      <TextField id="outlined-basic" label="Адказ" variant="outlined" />
     </div>
   );
 };

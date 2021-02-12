@@ -62,7 +62,7 @@ export const TestTemplate_B_1 = ({quest, questTextArr}:ITT_B_1_props) => {
           </ul>
         </div>
       </div>
-      <TextField id="outlined-basic" label="Answer" variant="outlined" />
+      <TextField id="outlined-basic" label="Адказ" variant="outlined" />
     </div>
   );
 };
