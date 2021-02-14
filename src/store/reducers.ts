@@ -34,6 +34,12 @@ const rootReducer = (
                 ...state,
                 curUserAnswer: action.curUserAnswer || ""
             };
+        case "ShowTestInfo" : 
+            return {
+                ...state,
+                curSubPage : "AdminShowTestInfo",
+                curShowTestInfoId: action.showTestId || -1
+            };        
         default :
             return state;
     }    

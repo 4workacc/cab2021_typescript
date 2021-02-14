@@ -12,6 +12,7 @@ interface IRootState {
   curTestName?: string;
   curUserAnswer?:string;
   curTestId?: number;
+  curShowTestInfoId?: number;
 }
 
 interface IRootAction {
@@ -21,4 +22,5 @@ interface IRootAction {
   testName?: string;
   curUserAnswer?:string;
   testId?: number;
+  showTestId?:number;
 }

@@ -1,6 +1,7 @@
 import { FormControl, InputLabel, makeStyles, MenuItem, Paper, Select, Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow } from '@material-ui/core';
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { Dispatch } from 'redux';
 
 const useStyles = makeStyles({
     tablecell : {
@@ -9,6 +10,7 @@ const useStyles = makeStyles({
   });
 
 export const AdminResults: React.FC = () => {
+    const dispatch:Dispatch<any> = useDispatch();
     const classes = useStyles();
     const [ curFullTestList, setCurFullTestList ] = useState<any[]>([]);
     const [ curShowTasks, setCurShowTasks ] = useState<any[]>([]);
@@ -52,7 +54,12 @@ export const AdminResults: React.FC = () => {
                 setTestsname(result.tests);
              })
     },[]);
-    
+    const trClickHandler = (id:number) => {
+        dispatch({
+            type: "ShowTestInfo",
+            showTestId : id
+        })
+    };
     return (
         <div className="UserResultsTab">        
         <FormControl >
@@ -163,7 +170,8 @@ export const AdminResults: React.FC = () => {
                                 return (
                                     <TableRow 
                                         hover
-                                        key = {el.test_id} >
+                                        key = {el.test_id} 
+                                        onClick = { ()=>trClickHandler(el.test_id) }>
                                         <TableCell align="center" key={el.test_id+"00"} className={classes.tablecell}>{el.user_fio}</TableCell>
                                         <TableCell align="center" key={el.test_id+"01"} className={classes.tablecell}>{el.test_name}_{el.task_id}</TableCell>
                                         <TableCell align="center" key={el.test_id+"02"} className={classes.tablecell}>{el.dateTime}</TableCell>

@@ -8,6 +8,7 @@ import { UserResults } from "./UserPages/UserResults/UserResults";
 import { AdminAddTask } from "./AdminPages/AdminAddTask";
 import { AdminResults } from "./AdminPages/AdminResults";
 import { AdminStatistics } from "./AdminPages/AdminStatistics";
+import { AdminShowTestInfo} from "./AdminPages/AdminShowTestInfo";
 
 import { TestPage } from './TestPage';
 
@@ -23,7 +24,7 @@ export const MainPage:React.FC = () => {
                 break;
             case "AdminResults" : 
                 el = <AdminResults />;
-                break;
+                break; 
             case "AdminStatistics" : 
                 el = <AdminStatistics />;
                 break;
@@ -35,6 +36,9 @@ export const MainPage:React.FC = () => {
                 break;
             case "TestPage" : 
                 el = <TestPage />;
+                break;
+            case "AdminShowTestInfo" :
+                el = <AdminShowTestInfo />;
                 break;
             default :
                 el = <UserTasks />;
