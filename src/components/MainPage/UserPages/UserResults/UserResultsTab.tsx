@@ -69,15 +69,30 @@ export const UserResultsTab: React.FC = () => {
                             </TableRow>
                         </TableHead>
                         <TableBody>     
+                            {/* select results by task id to arr
+                            show 
+                            <tableRow>
+                                <test name><medium value>
+                            <table row>
+                                <attempt date><attempt result>
+                                <attempt date><attempt result>
+                                <attempt date><attempt result>
+                                
+                            */}
                             { curShowTasks.map ( el => {
                                 return (
+                                    <>
+                                    <TableRow>
+                                        <TableCell align = "center">midvalue</TableCell>
+                                    </TableRow>
                                     <TableRow 
                                         hover
                                         key = {el.test_id} >
                                         <TableCell align="center" key={el.test_id+"01"} className={classes.tablecell}>{el.test_name}_{el.task_id}</TableCell>
                                         <TableCell align="center" key={el.test_id+"02"} className={classes.tablecell}>{el.dateTime}</TableCell>
                                         <TableCell align="center" key={el.test_id+"02"} className={classes.tablecell}>{el.result}</TableCell>
-                                    </TableRow>  
+                                    </TableRow>
+                                    </>  
                                 )
                             } )}
                         </TableBody>
