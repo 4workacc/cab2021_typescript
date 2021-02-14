@@ -1,19 +1,29 @@
 import { Button, FormControl, InputLabel, MenuItem, MuiThemeProvider, Select } from "@material-ui/core";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 export const AdminAddTask: React.FC = () => {
     const [ usersFIO, setUsersFIO ] = useState<string[]>(["f1", "f2", "f3", "f4"]);
     const [ testsName, setTestsname ] = useState<string[]>(["1", "2", "3"]);
 
-    const [ selectedFIO, serSeletedFIO ] = useState("");
+    const [ selectedFIO, setSeletedFIO ] = useState("");
     const [ selectedTest, setSelectedTest ] = useState("");
-    const [ selectedDate, setSelecetedDate ] = useState("");
+    const [ selectedDate, setSelectedDate ] = useState("");
 
     const butClickHandler = () => {
        alert ( `SET ${selectedTest} to user ${selectedFIO} before ${selectedDate}`);
     }
-    const handleUser = (event: React.ChangeEvent<{ value: unknown }>) => {console.log(event.currentTarget.value)};
-    const handleTest = (event: React.ChangeEvent<{ value: unknown }>) => { console.log("")}
+ 
+    const handleTest = (event: React.ChangeEvent<{ value: unknown }>) => { console.log("")};
+
+    useEffect(()=>{
+        fetch(`https://cab07.000webhostapp.com/new_refact/new_admin_getUsersAndTests.php`)
+          .then((res) => res.json())
+          .then(
+            (result) => {
+                setUsersFIO(result.users);
+                setTestsname(result.tests);
+             })
+    },[]);
     return (
         <div className = "AdminAddTask">
         <FormControl >
@@ -22,7 +32,7 @@ export const AdminAddTask: React.FC = () => {
             labelId="demo-simple-select-label"
             id="demo-simple-select"     
             value = { selectedFIO }       
-            onChange={ handleUser }
+            onChange ={ e => setSeletedFIO(e.target.value as string) }
         >
          { usersFIO.map ( el => {
              return (
@@ -37,7 +47,7 @@ export const AdminAddTask: React.FC = () => {
             <Select
             labelId="demo-simple-select-label"
             id="demo-simple-select"            
-            onChange = { handleTest }
+            onChange = { e => setSelectedTest(e.target.value as string) }
         >
          { testsName.map ( el => {
              return (
@@ -48,8 +58,11 @@ export const AdminAddTask: React.FC = () => {
       </FormControl>
        <input
             type = "date"
+            value = { selectedDate }
+            onChange = { e => setSelectedDate( e.target.value as string)}
             ></input>
-            <Button>set</Button>
+            <Button
+                onClick = { butClickHandler }>set</Button>
                     </div>
     )
 }
