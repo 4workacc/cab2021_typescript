@@ -11,6 +11,17 @@ export const AdminAddTask: React.FC = () => {
 
     const butClickHandler = () => {
        alert ( `SET ${selectedTest} to user ${selectedFIO} before ${selectedDate}`);
+    //    https://cab07.000webhostapp.com/new_refact/new_admin_AddTasks.php?USER_FIO=IvanovOO&TEST_NAME=CY_2020_1&START_DATE_TIME=2021-02-09&END_DATE_TIME=2021-02-09
+    fetch(`https://cab07.000webhostapp.com/new_refact/new_admin_AddTasks.php?
+            USER_FIO=${selectedFIO}&
+            TEST_NAME=${selectedTest}&
+            START_DATE_TIME=2021-01-02&
+            END_DATE_TIME=${selectedDate}`)
+          .then((res) => res.json())
+          .then(
+            (result) => {
+                alert(result.message)
+            })
     }
  
     const handleTest = (event: React.ChangeEvent<{ value: unknown }>) => { console.log("")};
