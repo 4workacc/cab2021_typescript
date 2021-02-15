@@ -1,3 +1,4 @@
+import { Paper } from '@material-ui/core';
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 
@@ -17,8 +18,16 @@ export const AdminShowTestInfo:React.FC = () => {
     },[curShowTestInfoId])
     return (
         <div className = "AdminShowTestInfo">
-            { curShowTestInfoId}
-            { console.log(curTestData)}
+            <p>Cur test name {curTestData.test_name}</p>
+            <p>Cur user fio {curTestData.user_fio}</p>
+            <p>Cur test result {curTestData.result}</p>
+            <p>Test date time {curTestData.dateTime}</p>
+            <p>result {curTestData.result}</p>
+            <p>answers {curTestData.answers}</p>
+            <Paper>
+                
+            </Paper>
+        
         </div>
     )
 }
