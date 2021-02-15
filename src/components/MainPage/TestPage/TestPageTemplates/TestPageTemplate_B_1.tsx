@@ -6,7 +6,8 @@ import {
   TextField,
   Typography,
 } from "@material-ui/core";
-import React, { useState } from "react";
+import React, { Dispatch, useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 interface ITT_B_1_props {
   quest: string;
@@ -38,6 +39,22 @@ const useStyles = makeStyles({
 
 export const TestTemplate_B_1 = ({quest, questTextArr}:ITT_B_1_props) => {
   const classes = useStyles();
+  const dispatch:Dispatch<any> = useDispatch();
+  const curUserAnswer = useSelector((state:IRootState) => state.curUserAnswer);
+  
+  const [ curAnswer, setCurAnswer ] = useState("");
+
+  useEffect(()=>{
+    if ( curUserAnswer === "") {
+      setCurAnswer("")
+    }
+  },[curUserAnswer]);
+  useEffect(()=>{
+    dispatch({
+        type: "SetUserAnswer",
+        curUserAnswer : curAnswer
+    });
+  },[curAnswer]);
   
   return (
     <div className={classes.container}>
@@ -62,7 +79,12 @@ export const TestTemplate_B_1 = ({quest, questTextArr}:ITT_B_1_props) => {
           </ul>
         </div>
       </div>
-      <TextField id="outlined-basic" label="Адказ" variant="outlined" />
+      <TextField 
+        id="outlined-basic" 
+        label="Адказ" 
+        variant="outlined"
+        value={curAnswer}
+        onChange = { e => { setCurAnswer(e.currentTarget.value)}} />
     </div>
   );
 };

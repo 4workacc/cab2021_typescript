@@ -92,7 +92,7 @@ export const TestPage:React.FC = () => {
         };
         if ( curQuestIndex < curTestsQuests.length -1) {
             let yy = rAnswers;
-            yy.push( `${rIds[curQuestIndex]}_${rThemes[curQuestIndex]}_${curUserAnswer === rArr[curQuestIndex]}_${curUserAnswer!}`);
+            yy.push( `${rIds[curQuestIndex]}_${rThemes[curQuestIndex] || ""}_${curUserAnswer === rArr[curQuestIndex]}_${curUserAnswer!}`);
             setRAnswers( yy );
             incrQuestIndex( curQuestIndex + 1);
             dispatch({
