@@ -32,7 +32,7 @@ const useStyles = makeStyles({
     transform: "scale(2)",
   },
 });
-
+// 
 export const TestTemplate_A_1 = ({quest, answers}:ITT_A_1_props) => {
   const classes = useStyles();
   const [ ch0, setCh0 ] = useState(false);
