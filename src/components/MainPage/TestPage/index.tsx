@@ -109,18 +109,22 @@ export const TestPage:React.FC = () => {
                 newSubPage: "UserTasks"
             });
             let dt = Date.now();
-            let ct = (""+new Date(dt)).split("G")[0];
-            fetch(`https://cab07.000webhostapp.com/new_refact/new_user_updateTasksAttemptsCount.php?
-                TASK_ID=${curTestId}&
-                REQ_NAME=${curTestName}&
-                REQ_FIO=${curUserFIO}&
-                REQ_DATE=${ct}&
-                REQ_RES=${rez}&
-                REQ_ANS=${anss}`);
-        }
-        
+            let ct = (""+new Date(dt)).split("G")[0] as string;
+            fetch( `https://cab07.000webhostapp.com/new_refact/new_user_updateTasksAttemptsCount.php?
+            TASK_ID=${curTestId}`)
+            .then((res)=>res.json());
+
+            fetch( `https://cab07.000webhostapp.com/new_refact/new_user_setTestResult.php?
+                task_id=${curTestId}&
+                test_name=${curTestName}&
+                user_fio=${curUserFIO}&
+                date_time=${ct}&
+                user_result=${rez}&
+                user_answers=${anss}`)            
+            .then((res) => res.json())     
+        };       
     };
-    https://cab07.000webhostapp.com/new_refact/new_user_updateTasksAttemptsCount.php?TASK_ID=1&
+ 
     return (
         <div className = "TestPage">                
             { curTestsQuests[curQuestIndex]}
