@@ -2,6 +2,7 @@ import { makeStyles, Paper, TableBody, TableCell, TableContainer, TableHead, Tab
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { TestBase } from '../../../store/Tests';
+import { AdminShowTestInfoTest } from './AdminShowTestInfoTest';
 
 interface Tab{
     id: string;
@@ -192,41 +193,7 @@ export const AdminShowTestInfo:React.FC = () => {
                         </TableRow>
                     </TableBody>               
                 </TableContainer>
-
-
-                {/* <TableContainer className = {classes.tabB}>
-                    <TableHead>
-                        <TableRow>
-                            <TableCell></TableCell>
-                            { curBTabHead.map( (el:any) => {
-                                return (
-                                    <TableCell className={classes.TCB}>{el}</TableCell>
-                                )                                    
-                            })}
-                        </TableRow>                        
-                    </TableHead>   
-                    <TableBody>
-                        <TableRow>
-                            <TableCell>Адказ</TableCell>  
-                            { curBTabRightAns.map( (el:string) => {
-                                return (
-                                    <TableCell className={classes.TCB}>{el}</TableCell>
-                                )
-                            })}                            
-                        </TableRow>                        
-                        <TableRow>
-                            <TableCell>Вучань</TableCell>    
-                            { curBTabUserAns.map( (el:string, ind:number) => {
-                                return (
-                                    <TableCell 
-                                        className={`${classes.TCB} ${curBTabRightAns[ind] === curBTabUserAns[ind]?classes.right:classes.bad}`}>
-                                        {el.length>0?el:"-"}    
-                                    </TableCell>
-                                )
-                            })}                          
-                        </TableRow>
-                    </TableBody>               
-                </TableContainer> */}
+                <AdminShowTestInfoTest arr = { showTest }/>             
             </Paper>
 
         
