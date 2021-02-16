@@ -58,7 +58,7 @@ export const TestPage:React.FC = () => {
         TestBase.map ( (el:any) => {
             if ( el.testSetName === curTestName ) {
                 let qq:any = el.questions;
-                //shuffle(qq);
+                shuffle(qq);                
                 qq.map ( (al:IQuest) => {
                         switch (al.type) {
                             case "A_0" :
