@@ -17,6 +17,9 @@ const useStyles = makeStyles({
     Accord : {
         display: "flex",
         flexDirection: "column"
+    },
+    head: {
+        fontSize: "25px",
     }
 })
 
@@ -29,11 +32,11 @@ export const AdminShowTestInfoTest = ({arr}:Test) => {
             arr.map( (al:Quest ) => {
                 q.push(  
                     <Accordion >                  
-                        <AccordionSummary>
+                        <AccordionSummary className = {classes.head}>
                         <Typography> {al.id||""}</Typography>
                         </AccordionSummary>
                         <AccordionDetails className = {classes.Accord}>
-                            <p> {al.quest}</p>              
+                            <p className = {classes.head}> {al.quest}</p>              
                             <p> {al.questText || ""}</p>                
                             {al.answers?al.answers!.map( (el:any, ind:number) => <p>{`${ind}.${el}`}</p>):"" }          
                             <p> {al.right }</p>
