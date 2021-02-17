@@ -39,7 +39,7 @@ const rootReducer = (
                 ...state,
                 curSubPage : "AdminShowTestInfo",
                 curShowTestInfoId: action.showTestId || -1
-            };        
+            };   
         default :
             return state;
     }    

@@ -27,6 +27,12 @@ const useClass = makeStyles({
         left: "47%",
         top: "200px",
         transform: "scale(2)"
+    },
+    buttonErr : {
+        left: "100%",
+        top: "50%",
+        transform: "scale (0.6)"
+
     }
 })
 
@@ -45,6 +51,7 @@ export const TestPage:React.FC = () => {
 
     const curUserAnswer = useSelector((state:IRootState) => state.curUserAnswer);
 
+    const [ rQuest, setrQuest ] = useState<string[]>([]);
     const [ rArr, setRArr ] = useState<string[]>([]);
     const [ rIds, setRIds ] = useState<string[]>([]);
     const [ rThemes, setRThemes ] = useState<string[]>([]);
@@ -52,6 +59,7 @@ export const TestPage:React.FC = () => {
 
     useEffect (() => { 
         let curTestsSet:any[]= [];
+        let rq:any[] = []
         let rr:any[] = [];
         let tIds:any[] = [];
         let tTemes:any[] = [];
@@ -72,6 +80,7 @@ export const TestPage:React.FC = () => {
                             case "B_1" :
                                 curTestsSet.push(<TestTemplate_B_1 quest={al.quest} questTextArr = {al.questTextArr || []}/>); break;
                         };
+                        rq.push(al.quest);
                         rr.push(al.right);
                         tIds.push(al.id);                        
                         tTemes.push(al.theme);
@@ -82,12 +91,16 @@ export const TestPage:React.FC = () => {
         setRIds(tIds);
         setRThemes(rThemes);                 
         setCurTestsQuests( curTestsSet );
+        setrQuest(rq);
     },[ curTestName])
-
-
+    const errclickHandler = () => {
+        fetch( `https://cab07.000webhostapp.com/new_refact/new_admin_getErrMessage.php?ERR_MESSAGE=${curTestName} ${rQuest[curQuestIndex]}`)
+        .then((res) =>res.json());
+        alert("Пра памылку паведамлена!!")
+    }
     const clickHandler = () => {
         if (curUserAnswer === rArr[curQuestIndex]) {
-            alert ("Right");
+            alert ("Дакладна!");
             incrRightCount( rightCount +1 );
         };
         if ( curQuestIndex < curTestsQuests.length -1) {
@@ -135,6 +148,12 @@ export const TestPage:React.FC = () => {
                 className = {classes.button}
                 onClick = { clickHandler }
                 >Адказаць</Button>
+            <Button
+              variant="contained" 
+              color="secondary"
+              className = {classes.buttonErr}
+              onClick = { errclickHandler }
+              >Націсніце, калі убачылі памылку!</Button>
         </div>
     )
 }
