@@ -94,7 +94,7 @@ export const TestPage:React.FC = () => {
         setrQuest(rq);
     },[ curTestName])
     const errclickHandler = () => {
-        fetch( `https://cab07.000webhostapp.com/new_refact/new_admin_getErrMessage.php?ERR_MESSAGE=${curTestName} ${rQuest[curQuestIndex]}`)
+        fetch( `https://cab07.000webhostapp.com/new_refact/new_admin_getErrMessage.php?ERR_MESSAGE=${curTestName} ${rIds[curQuestIndex]}`)
         .then((res) =>res.json());
         alert("Пра памылку паведамлена!!")
     }
