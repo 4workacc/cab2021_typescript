@@ -4,7 +4,6 @@ import {
   InputLabel,
   makeStyles,
   MenuItem,
-  MuiThemeProvider,
   Select,
 } from "@material-ui/core";
 import React, { useEffect, useState } from "react";
@@ -42,10 +41,6 @@ export const AdminAddTask: React.FC = () => {
       .then((result) => {
         alert(result.message);
       });
-  };
-
-  const handleTest = (event: React.ChangeEvent<{ value: unknown }>) => {
-    console.log("");
   };
 
   useEffect(() => {

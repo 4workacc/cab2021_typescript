@@ -589,7 +589,7 @@ export const TestBase = [
     ],
   },
   {
-    id: 2,
+    id: 1,
     testSetName: "ЦТ_2020_2",
     questions: [
       {
@@ -1165,7 +1165,7 @@ export const TestBase = [
     ],
   },
   {
-    id: 3,
+    id: 2,
     testSetName: "ЦТ_2020_3",
     questions: [
       {
@@ -1744,7 +1744,7 @@ export const TestBase = [
     ],
   },
   {
-    id: 4,
+    id: 3,
     testSetName: "ЦТ_2020_4",
     questions: [
       {

@@ -1,4 +1,4 @@
-import { makeStyles, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow } from '@material-ui/core';
+import { makeStyles, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@material-ui/core';
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 

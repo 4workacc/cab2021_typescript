@@ -1,4 +1,4 @@
-import { makeStyles, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow } from '@material-ui/core';
+import { makeStyles, Paper, Table, TableBody, TableCell, TableContainer, TableHead,  TableRow } from '@material-ui/core';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Dispatch } from 'redux';
@@ -69,7 +69,7 @@ export const UserResultsTab: React.FC = () => {
                                     style={{ minWidth: "200px" }}
                                     className={classes.tablecell}
                                 >
-                                    Дата выканання
+                                    Канчатковая дата выканання
                                 </TableCell>
                                 <TableCell
                                     key={"03"}
