@@ -1,4 +1,7 @@
 import {
+  Accordion,
+  AccordionDetails,
+  AccordionSummary,
   FormControl,
   InputLabel,
   makeStyles,
@@ -17,6 +20,20 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Dispatch } from "redux";
 
+interface AttemptData {
+  dateTime: string;
+  result:number;
+  resultId?: number;
+}
+
+interface TaskData {
+  taskID: number;
+  userFIO: string;
+  TestName: string;
+  midValue : number;
+  attemtps?: AttemptData[];
+}
+
 const useStyles = makeStyles({
   tablecell: {
     fontSize: "25px",
@@ -29,7 +46,20 @@ const useStyles = makeStyles({
   big : {
       flexDirection: "column"
   },
-  head : {}
+  head : {},
+  ResultsTab :{
+    width: "100%",
+    height: "500px",
+    overflowY : "scroll"    
+  },
+  Accord: {
+    width:"100%"
+  },
+  AccordSum: {
+    width:"100%",
+    flexDirection: "row"
+  }
+
 });
 
 export const AdminResults: React.FC = () => {
@@ -37,6 +67,7 @@ export const AdminResults: React.FC = () => {
   const classes = useStyles();
   const [curFullTestList, setCurFullTestList] = useState<any[]>([]);
   const [curShowTasks, setCurShowTasks] = useState<any[]>([]);
+  const [ curTasksData, setCurTasksData ] = useState<TaskData[]>([]);
 
   const [usersFIO, setUsersFIO] = useState<string[]>(["f1", "f2", "f3", "f4"]);
   const [testsName, setTestsname] = useState<string[]>(["1", "2", "3"]);
@@ -45,6 +76,8 @@ export const AdminResults: React.FC = () => {
   const [selectedTest, setSelectedTest] = useState("");
 
   useEffect(() => {
+    let TasksData: TaskData[] = [];
+
     fetch(`https://cab07.000webhostapp.com/new_refact/new_admin_GetResults.php`)
       .then((res) => res.json())
       .then((result) => {
@@ -59,10 +92,41 @@ export const AdminResults: React.FC = () => {
             dateTime: el.dateTime,
             result: el.result,
           });
+          let rr:TaskData = {
+            taskID : el.task_id,
+            userFIO: el.user_fio,
+            TestName: el.test_name,
+            midValue: 0,
+            attemtps: []
+          };
+          let isIn: boolean = false;
+          TasksData.map( (al:any) =>{            
+            if ( al.taskID === rr.taskID ) {
+              isIn = true;
+            };
+          });
+          if ( !isIn ) {
+            TasksData.push( rr )
+          }         
         });
         setCurFullTestList(arr);
         setCurShowTasks(arr);
+        result.results.map ( (el:any) => {
+          TasksData.map( (al:TaskData ) => {
+            if ( al.taskID === el.task_id ) {
+              let at:AttemptData = {
+                dateTime: el.dateTime,
+                result: el.result,
+                resultId : el.test_id,
+              };
+              if ( al.attemtps!.indexOf( at ) === -1 ) {
+                  al.attemtps!.push( at );
+              }
+            }
+          })
+        }) 
       });
+      setCurTasksData( TasksData );
   }, []);
   useEffect(() => {
     fetch(
@@ -94,14 +158,14 @@ export const AdminResults: React.FC = () => {
             onChange={(e) => {
               let x: string = e.target.value as string;
               setSeletedFIO(x);
-              let showArr: any[] = curFullTestList;
-              let newArr: any[] = [];
-              showArr.map((el: any) => {
-                if (el.user_fio === x) {
+              let showArr: TaskData[] = curTasksData;
+              let newArr: TaskData[] = [];
+              showArr.map((el: TaskData )=> {
+                if (el.userFIO === x) {
                   newArr.push(el);
                 }
               });
-              setCurShowTasks(newArr);
+              setCurTasksData(newArr);
             }}
           >
             {usersFIO.map((el) => {
@@ -120,14 +184,14 @@ export const AdminResults: React.FC = () => {
             onChange={(e) => {
               let x: string = e.target.value as string;
               setSelectedTest(x);
-              let showArr: any[] = curFullTestList;
-              let newArr: any[] = [];
-              showArr.map((el: any) => {
-                if (el.test_name === x) {
+              let showArr: TaskData[] = curTasksData;
+              let newArr: TaskData[] = [];
+              showArr.map((el: TaskData) => {
+                if (el.TestName=== x) {
                   newArr.push(el);
                 }
               });
-              setCurShowTasks(newArr);
+              setCurTasksData(newArr);
             }}
           >
             {testsName.map((el) => {
@@ -137,14 +201,48 @@ export const AdminResults: React.FC = () => {
         </FormControl>
       </div>
       <div className="UserResultsTab">      
-      <Paper>
-        <TableContainer>
-          <Table
-            stickyHeader
-            aria-label="sticky table"
-            className="UserResultsTab"
-          >
-            <TableHead>
+            { curTasksData.map ((el:TaskData) => {
+              let j =0;
+              let s = 0;
+              for ( let i=0; i<el.attemtps!.length; i++) {
+                if ( el.attemtps![i].result) {
+                  s+= el.attemtps![i].result;
+                  j+=1;
+                }
+              } 
+              let med: number = Math.floor( s/j );
+              let det:any = [];
+              el.attemtps!.map( (al:AttemptData, ind:number) => {
+                det.push(
+                  <AccordionDetails
+                    className = "det" 
+                    onClick = { () =>trClickHandler(al.resultId as number)}> 
+                    {` Try #${ind+1 } : ${al.dateTime}  result: ${al.result}`}
+                  </AccordionDetails>
+                )
+              })
+
+              return (
+                <Accordion className={classes.Accord}>
+                <AccordionSummary className={` ${classes.AccordSum}`}>
+                  <div className = "AccordSum">
+                    <p>User:{el.userFIO}</p>
+                    <p>Test:{el.TestName} </p>
+                    <p>Medium value:{med}</p>
+                  </div>
+                </AccordionSummary>
+                 { det }                 
+              </Accordion> 
+              )
+            }) }
+                    
+      </div>
+    </div>
+  );
+};
+
+
+{/* <TableHead>
               <TableRow>
                 <TableCell
                   key={"00"}
@@ -179,61 +277,54 @@ export const AdminResults: React.FC = () => {
                   Вынік
                 </TableCell>
               </TableRow>
-            </TableHead>
-            <TableBody>
-              {/* select results by task id to arr
-                            show 
-                            <tableRow>
-                                <test name><medium value>
-                            <table row>
-                                <attempt date><attempt result>
-                                <attempt date><attempt result>
-                                <attempt date><attempt result>
+            </TableHead> */}
+// <TableBody>
+//               {/* select results by task id to arr
+//                             show 
+//                             <tableRow>
+//                                 <test name><medium value>
+//                             <table row>
+//                                 <attempt date><attempt result>
+//                                 <attempt date><attempt result>
+//                                 <attempt date><attempt result>
                                 
-                            */}
-              {curShowTasks.map((el) => {
-                return (
-                  <TableRow
-                    hover
-                    key={el.test_id}
-                    onClick={() => trClickHandler(el.test_id)}
-                  >
-                    <TableCell
-                      align="center"
-                      key={el.test_id + "00"}
-                      className={classes.tablecell}
-                    >
-                      {el.user_fio}
-                    </TableCell>
-                    <TableCell
-                      align="center"
-                      key={el.test_id + "01"}
-                      className={classes.tablecell}
-                    >
-                      {el.test_name}_{el.task_id}
-                    </TableCell>
-                    <TableCell
-                      align="center"
-                      key={el.test_id + "02"}
-                      className={classes.tablecell}
-                    >
-                      {el.dateTime}
-                    </TableCell>
-                    <TableCell
-                      align="center"
-                      key={el.test_id + "02"}
-                      className={classes.tablecell}
-                    >
-                      {el.result}
-                    </TableCell>
-                  </TableRow>
-                );
-              })}
-            </TableBody>
-          </Table>
-        </TableContainer>
-      </Paper>
-    </div>
-    </div>
-  );
-};
+//                             */}
+//               {curShowTasks.map((el) => {
+//                 return (
+//                   <TableRow
+//                     hover
+//                     key={el.test_id}
+//                     onClick={() => trClickHandler(el.test_id)}
+//                   >
+//                     <TableCell
+//                       align="center"
+//                       key={el.test_id + "00"}
+//                       className={classes.tablecell}
+//                     >
+//                       {el.user_fio}
+//                     </TableCell>
+//                     <TableCell
+//                       align="center"
+//                       key={el.test_id + "01"}
+//                       className={classes.tablecell}
+//                     >
+//                       {el.test_name}_{el.task_id}
+//                     </TableCell>
+//                     <TableCell
+//                       align="center"
+//                       key={el.test_id + "02"}
+//                       className={classes.tablecell}
+//                     >
+//                       {el.dateTime}
+//                     </TableCell>
+//                     <TableCell
+//                       align="center"
+//                       key={el.test_id + "02"}
+//                       className={classes.tablecell}
+//                     >
+//                       {el.result}
+//                     </TableCell>
+//                   </TableRow>
+//                 );
+//               })}
+//             </TableBody>
