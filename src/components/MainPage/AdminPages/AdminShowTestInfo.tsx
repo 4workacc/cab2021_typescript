@@ -66,10 +66,14 @@ export const AdminShowTestInfo:React.FC = () => {
     const [ curATab, setATab ] = useState<Tab[]>([]);
     const [ curBTab, setBTab ] = useState<Tab[]>([]);
 
+    const [ curUserRightCount, setRightCount ] = useState(0);
+
     useEffect(()=>{
         let curTest: any[] = [];
         let aTab:Tab[] = [];
         let bTab:Tab[] = [];     
+
+        let rightCount : number = 0;
 
         fetch(`https://cab07.000webhostapp.com/new_refact/new_admin_GetTestInfo.php?request_test_id=${curShowTestInfoId}`)
         .then((res) => res.json())
@@ -85,17 +89,18 @@ export const AdminShowTestInfo:React.FC = () => {
                    
                 result.results[0].answers.split('@').map ( (el:string) => {
                     if (el.split('_')[0][0] === "A") {
-                        let qq: any;
+                        let qq: any;                        
                         curTest.map( (al:any) => {
                             if (al.id === el.split('_')[0]) {
                                 qq = al.right;
                             }
-                        });
+                        });                        
                         aTab.push({
                             id: el.split('_')[0],
                             userAns: el.split('_')[3],
                             rightAns: qq
-                        })
+                        });
+                        if ( el.split('_')[3] === qq ) { rightCount += 1;}
                     }
                     else {
                         let qq: any;
@@ -108,13 +113,15 @@ export const AdminShowTestInfo:React.FC = () => {
                             id: el.split('_')[0],
                             userAns: el.split('_')[3],
                             rightAns: qq
-                        })
+                        });
+                        if ( el.split('_')[3] === qq ) { rightCount += 1;}
                     }                    
                 })      
                 aTab.sort( compare );
                 setATab( aTab ); 
                 bTab.sort( compare );
-                setBTab ( bTab );              
+                setBTab ( bTab );                 
+                setRightCount( rightCount );
            });
                 
     },[curShowTestInfoId]);
@@ -122,7 +129,7 @@ export const AdminShowTestInfo:React.FC = () => {
         <div className = {classes.Main}>
             <p className = {classes.title}>Тэст: {curTestData.test_name}</p>
             <p className = {classes.title}>Выканаў:  {curTestData.user_fio}</p>
-            <p className = {classes.title}>Вынік: {curTestData.result} %</p>
+            <p className = {classes.title}>Вынік: {curTestData.result} %  ( {curUserRightCount}/{showTest.length} )</p>
             <p className = {classes.title}>Дата выканання: {curTestData.dateTime}</p>
 
             <Paper>

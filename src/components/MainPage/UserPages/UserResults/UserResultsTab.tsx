@@ -42,14 +42,14 @@ export const UserResultsTab: React.FC = () => {
                     <Table stickyHeader aria-label="sticky table" className="UserResultsTab" >
                         <TableHead>
                             <TableRow>
-                                <TableCell
+                                {/* <TableCell
                                     key={"01"}
                                     align="center"
                                     style={{ minWidth: "250px" }}
                                     className={classes.tablecell}
                                 >
                                    Назва тэста
-                                </TableCell>
+                                </TableCell> */}
                                 <TableCell
                                     key={"02"}
                                     align="center"
@@ -81,14 +81,11 @@ export const UserResultsTab: React.FC = () => {
                             */}
                             { curShowTasks.map ( el => {
                                 return (
-                                    <>
-                                    <TableRow>
-                                        <TableCell align = "center">midvalue</TableCell>
-                                    </TableRow>
+                                    <>                                    
                                     <TableRow 
                                         hover
                                         key = {el.test_id} >
-                                        <TableCell align="center" key={el.test_id+"01"} className={classes.tablecell}>{el.test_name}_{el.task_id}</TableCell>
+                                        {/* <TableCell align="center" key={el.test_id+"01"} className={classes.tablecell}>{el.test_name}_{el.task_id}</TableCell> */}
                                         <TableCell align="center" key={el.test_id+"02"} className={classes.tablecell}>{el.dateTime}</TableCell>
                                         <TableCell align="center" key={el.test_id+"02"} className={classes.tablecell}>{el.result}</TableCell>
                                     </TableRow>

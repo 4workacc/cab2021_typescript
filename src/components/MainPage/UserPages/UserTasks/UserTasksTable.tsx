@@ -55,14 +55,14 @@ export const UserResultsTab: React.FC = () => {
                     <Table stickyHeader aria-label="sticky table" className="UserTasksTab" >
                         <TableHead>
                             <TableRow>
-                                <TableCell
+                                {/* <TableCell
                                     key={"01"}
                                     align="center"
                                     style={{ minWidth: "250px" }}
                                     className={classes.tablecell}
                                 >
                                     Назва тэста
-                                </TableCell>
+                                </TableCell> */}
                                 <TableCell
                                     key={"02"}
                                     align="center"
@@ -88,7 +88,7 @@ export const UserResultsTab: React.FC = () => {
                                         hover
                                         key = {el.test_id} 
                                         onClick = { () => { userTaksTrClickHandler(el.test_name, el.test_id)}}>
-                                        <TableCell align="center" key={el.test_id+"01"} className={classes.tablecell}>{el.test_name}</TableCell>
+                                        {/* <TableCell align="center" key={el.test_id+"01"} className={classes.tablecell}>{el.test_name}</TableCell> */}
                                         <TableCell align="center" key={el.test_id+"02"} className={classes.tablecell}>{el.dateTime}</TableCell>
                                         <TableCell align="center" key={el.test_id+"02"} className={classes.tablecell}>{el.attepts_count}</TableCell>
                                     </TableRow>  

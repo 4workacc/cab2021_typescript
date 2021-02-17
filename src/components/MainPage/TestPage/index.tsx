@@ -109,7 +109,8 @@ export const TestPage:React.FC = () => {
                 newSubPage: "UserTasks"
             });
             let dt = Date.now();
-            let ct = (""+new Date(dt)).split("G")[0] as string;
+            let ct = (""+new Date(dt)).split("G")[0] as string;      
+                 
             fetch( `https://cab07.000webhostapp.com/new_refact/new_user_updateTasksAttemptsCount.php?
             TASK_ID=${curTestId}`)
             .then((res)=>res.json());
