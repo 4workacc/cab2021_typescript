@@ -1,4 +1,4 @@
-import { Button, makeStyles } from '@material-ui/core';
+import { Button, LinearProgress, makeStyles } from '@material-ui/core';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Dispatch } from 'redux';
@@ -32,13 +32,31 @@ const useClass = makeStyles({
         left: "100%",
         top: "50%",
         transform: "scale (0.6)"
+    },
+    timerTimer: {
+        width: "100%",
+        textAlign: "center",
+        fontSize: "20px",
+        paddingTop: "-50px"
 
+    },
+    timerLinear: {},
+    timerContainer: {
+        position: "absolute",
+        width: "100%",
+        height: "50px",
+        top: "100%",
+        left: "50%",
+        border: "1px solid black"
     }
+
 })
 
 export const TestPage:React.FC = () => {
     const dispatch:Dispatch<any> = useDispatch();
     const classes = useClass();
+
+    const [ curTime, changeTime ] = useState( 180 );
 
     const curTestName = useSelector((state:IRootState) => state.curTestName);    
     const curTestId = useSelector((state:IRootState) => state.curTestId);
@@ -92,8 +110,21 @@ export const TestPage:React.FC = () => {
         setRThemes(rThemes);                 
         setCurTestsQuests( curTestsSet );
         setrQuest(rq);
-    },[ curTestName])
-    const errclickHandler = () => {
+    },[ curTestName]);    
+
+    useEffect(() => {
+        if ( curTime>0 ) {
+            const timer = setInterval(() => {
+                changeTime( curTime - 1)
+            }, 1000);
+            return () => clearTimeout(timer);
+        }
+        else {
+            alert( "Time is over! ");
+        }
+      });
+   
+   const errclickHandler = () => {
         fetch( `https://cab07.000webhostapp.com/new_refact/new_admin_getErrMessage.php?ERR_MESSAGE=${curTestName} ${rIds[curQuestIndex]}`)
         .then((res) =>res.json());
         alert("Пра памылку паведамлена!!")
@@ -154,6 +185,13 @@ export const TestPage:React.FC = () => {
               className = {classes.buttonErr}
               onClick = { errclickHandler }
               >Націсніце, калі ўбачылі памылку!</Button>
+            <div className = "Timer">
+            <p className={classes.timerTimer}>{ Math.floor(curTime/60) }:{curTime - 60*Math.floor(curTime/60)} </p>
+            <LinearProgress 
+                variant="determinate"
+                value = {  curTime/180 *100 }></LinearProgress >                
+            </div>
+            
         </div>
     )
 }

@@ -202,3 +202,13 @@
 .det:hover {
   background-color: lightcyan;
 }
+.Timer {
+  position: absolute;
+  width: 100%;
+  top: -4%;
+  height: 20px;
+
+}
+.TestPage {
+
+}
