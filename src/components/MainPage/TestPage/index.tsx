@@ -153,7 +153,7 @@ export const TestPage:React.FC = () => {
               color="secondary"
               className = {classes.buttonErr}
               onClick = { errclickHandler }
-              >Націсніце, калі убачылі памылку!</Button>
+              >Націсніце, калі ўбачылі памылку!</Button>
         </div>
     )
 }

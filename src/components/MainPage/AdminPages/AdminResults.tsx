@@ -226,9 +226,9 @@ export const AdminResults: React.FC = () => {
                 <Accordion className={classes.Accord}>
                 <AccordionSummary className={` ${classes.AccordSum}`}>
                   <div className = "AccordSum">
-                    <p>User:{el.userFIO}</p>
-                    <p>Test:{el.TestName} </p>
-                    <p>Medium value:{med}</p>
+                    <p>Вучань:{el.userFIO}</p>
+                    <p>Заданне:{el.TestName} </p>
+                    <p>Сярэдняе:{med}</p>
                   </div>
                 </AccordionSummary>
                  { det }                 

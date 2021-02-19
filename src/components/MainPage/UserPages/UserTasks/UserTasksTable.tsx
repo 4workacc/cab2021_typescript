@@ -28,8 +28,9 @@ export const UserResultsTab: React.FC = () => {
                             test_name: el.task_test_name,
                             dateTime: el.task_end_time,
                             attepts_count: el.task_attempts_count
-                        }
+                        }                       
                     )
+                    console.log(arr);
                 })  
                 setCurShowTasks(arr);                  
             }

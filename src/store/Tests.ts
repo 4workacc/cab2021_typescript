@@ -2,6 +2,7 @@ export const TestBase = [
   {
     testSetName: "ЦТ_2020_1",
     id: 0,
+    timeToQuest: 2.5,    
     questions: [
       {
         id: "A1",
@@ -591,6 +592,7 @@ export const TestBase = [
   {
     id: 1,
     testSetName: "ЦТ_2020_2",
+    timeToQuest: 2.5, 
     questions: [
       {
         id: "A1",
@@ -1167,6 +1169,7 @@ export const TestBase = [
   {
     id: 2,
     testSetName: "ЦТ_2020_3",
+    timeToQuest: 2.5, 
     questions: [
       {
         id: "A1",
@@ -1746,6 +1749,7 @@ export const TestBase = [
   {
     id: 3,
     testSetName: "ЦТ_2020_4",
+    timeToQuest: 2.5, 
     questions: [
       {
         id: "A1",

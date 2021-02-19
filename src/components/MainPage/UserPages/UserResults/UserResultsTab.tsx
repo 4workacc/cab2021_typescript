@@ -36,8 +36,9 @@ export const UserResultsTab: React.FC = () => {
         );               
     },[curUserFIO]);
     return (
-        <div className="UserResultsTab">           
-            <Paper>
+        <div className="UserResultsTab">   
+             
+            <Paper> 
                 <TableContainer>
                     <Table stickyHeader aria-label="sticky table" className="UserResultsTab" >
                         <TableHead>

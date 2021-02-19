@@ -3,7 +3,8 @@ import { UserResultsTab } from "./UserResultsTab";
 
 export const UserResults:React.FC = () => {
     return (
-        <div className = "UserResults">            
+        <div className = "UserResults">        
+           
             <UserResultsTab />
         </div>
     )

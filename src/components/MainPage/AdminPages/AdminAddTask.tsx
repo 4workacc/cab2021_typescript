@@ -54,6 +54,7 @@ export const AdminAddTask: React.FC = () => {
   const [selectedFIO, setSeletedFIO] = useState("");
   const [selectedTest, setSelectedTest] = useState("");
   const [selectedDate, setSelectedDate] = useState("");
+  const [ questCount, setQuestCount ] = useState(40);
 
   const [ curActiveTasks, setCurActiveTasks ] = useState([]);
 
@@ -63,7 +64,8 @@ export const AdminAddTask: React.FC = () => {
             USER_FIO=${selectedFIO}&
             TEST_NAME=${selectedTest}&
             START_DATE_TIME=2021-01-02&
-            END_DATE_TIME=${selectedDate}`)
+            END_DATE_TIME=${selectedDate}&
+            QUEST_COUNT=${questCount}`)
       .then((res) => res.json())
       .then((result) => {
         alert(result.message);
@@ -97,7 +99,7 @@ export const AdminAddTask: React.FC = () => {
     <div className={classes.container}>
       <div className={classes.AdminAddTask}>
         <FormControl className={classes.select}>
-          <InputLabel id="demo-simple-select-label">User</InputLabel>
+          <InputLabel id="demo-simple-select-label">Прозвішча</InputLabel>
           <Select
             labelId="demo-simple-select-label"
             id="demo-simple-select"
@@ -111,7 +113,19 @@ export const AdminAddTask: React.FC = () => {
         </FormControl>
 
         <FormControl className={classes.select}>
-          <InputLabel id="demo-simple-select-label">Test</InputLabel>
+          <InputLabel id="demo-simple-select-label">Заданне</InputLabel>
+          <Select
+            labelId="demo-simple-select-label"
+            id="demo-simple-select"
+            onChange={(e) => setSelectedTest(e.target.value as string)}
+          >
+            {testsName.map((el) => {
+              return <MenuItem value={el}>{el}</MenuItem>;
+            })}
+          </Select>
+        </FormControl>
+        <FormControl className={classes.select}>
+          <InputLabel id="demo-simple-select-label">Колькасць пытанняў</InputLabel>
           <Select
             labelId="demo-simple-select-label"
             id="demo-simple-select"
@@ -145,7 +159,7 @@ export const AdminAddTask: React.FC = () => {
         <TableContainer>
           <Table stickyHeader aria-label="sticky table">
             <TableHead>
-              <TableCell className = {classes.tc}>Фамілія</TableCell>
+              <TableCell className = {classes.tc}>Прозвішча</TableCell>
               <TableCell className = {classes.tc}>Тэст</TableCell>
               <TableCell className = {classes.tc}>Срок выканання</TableCell>
             </TableHead>
